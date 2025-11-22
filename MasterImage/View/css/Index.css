@@ -187,3 +187,93 @@ footer p {
     font-family: montserrat-light;
     font-size: 0.6rem;
 }
+
+@media (max-width: 1024px) {
+    section {
+        height: auto;
+        flex-direction: column;
+        padding-bottom: 4rem;
+    }
+
+    #picture {
+        position: static;
+        padding: 2rem;
+        text-align: center;
+    }
+
+    #picture img {
+        width: 90%;
+        height: auto;
+    }
+
+    #catchPhrase {
+        position: static;
+        text-align: center;
+        margin-top: 1rem;
+        width: 100%;
+        font-size: 2.8rem;
+    }
+
+    #caption {
+        position: static;
+        text-align: center;
+        margin-top: 1rem;
+        width: 100%;
+        font-size: 1.8rem;
+    }
+
+    #start {
+        position: static;
+        margin: 2rem auto 0 auto;
+    }
+
+    img[alt="design1"],
+    img[alt="design2"] {
+        display: none; /* hide decorations on smaller screens */
+    }
+}
+
+@media (max-width: 768px) {
+    nav .navbar-buttons {
+        font-size: 1.3rem;
+        padding: 1rem;
+    }
+
+    nav .logo img {
+        width: 7rem;
+    }
+
+    #catchPhrase {
+        font-size: 2.2rem;
+    }
+
+    #caption {
+        font-size: 1.5rem;
+    }
+
+    #start .getStarted {
+        font-size: 1.2rem;
+        padding: 0.8rem 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    #catchPhrase {
+        font-size: 1.8rem;
+    }
+
+    #caption {
+        font-size: 1.2rem;
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    #picture img {
+        width: 100%;
+        border-radius: 1rem;
+    }
+
+    nav .navbar-button {
+        padding: 1rem;
+    }
+}
