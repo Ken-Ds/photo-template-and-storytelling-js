@@ -1,0 +1,83 @@
+@font-face {
+    font-family: 'fredoka';
+    src: url(../assets/FredokaOne-Regular.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'montserrat-black';
+    src: url(../assets/Montserrat-Black.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'montserrat-extra-bold';
+    src: url(../assets/Montserrat-ExtraBold.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'montserrat-bold';
+    src: url(../assets/Montserrat-Bold.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'montserrat-medium';
+    src: url(../assets/Montserrat-Medium.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'montserrat-light';
+    src: url(../assets/Montserrat-Light.ttf) format('truetype');
+}
+
+header {
+    align-items: center;
+    padding-top: 1.5rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+}
+
+nav .navbar-buttons {
+    text-align: right;
+    width: 100%;
+    padding-top: 2.5rem;
+    padding-left: 2rem;
+    padding-right: 3rem;
+    font-family: fredoka;
+    font-size: 1.75rem;
+    background-color: #ffcb01;
+    border-radius: 1rem 1rem 0rem 0rem;
+}
+
+nav .navbar-button {
+    color: #010100;
+    gap: 1rem;
+    text-decoration: none;
+    padding: 2rem;
+}
+
+nav .navbar-button:hover {
+    color: #eb1e0e;
+}
+
+nav .logo {
+    padding-left: 2.5rem;
+    background-color: #010100;
+    border-radius: 0rem 1rem 1rem 0rem;
+}
+
+nav .logo img {
+    width: 8rem;
+    margin-right: 1.5rem;
+}
+
+body{
+    background-color: #010100;
+}
+
+main {
+    background-color: #ffcb01;
+}
