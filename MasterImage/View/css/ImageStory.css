@@ -93,10 +93,12 @@ section {
     margin-top: 1rem;
     margin-bottom: 0;
     margin-left: 21rem;
+    display: none;
 }
 
 #tutorial {
-    display: block;
+    display: none;
+    /*display : block;*/
     text-align: center;
 }
 
