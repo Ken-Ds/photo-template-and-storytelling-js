@@ -41,10 +41,9 @@ html {
 
 /* ----------- Navbar ----------- */
 header {
+    margin-bottom: 1rem;
     align-items: center;
-    padding-top: 1.5rem;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+    padding: 1rem 0 0.20rem 1rem;
 }
 
 .navbar {
@@ -66,30 +65,32 @@ nav .logo img {
 /* ----------- Body (Content) ----------- */
 body {
     background-color: #010100;
-    height: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 .content{
+    display: flex;
+    justify-content: center;
     background-color: #ffcb01;
-    padding-top: 5rem;
     margin-left: 1.5rem;
     margin-right: 1.5rem;
     border-radius: 1rem 1rem 1rem 1rem ;
-    min-height: 100%;
     position: relative;
+    flex-grow: 1;
 }
 
 .main-wrapper{
-    max-width: 500px;
+    flex:1;
+    width: 100%;
     flex-direction: column;
     display: flex;
-    padding: 1rem;
-    box-sizing: border-box;
+    padding: 1.5rem;
 }
 
 .page-title {
     font-family: fredoka;
-    padding-left: 1rem;
     padding-top: 1rem;
     font-size: 1.30rem;
     text-align: center;
@@ -98,49 +99,44 @@ body {
 
 /* ----------- Upload Area ----------- */
 .MUupload {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: #FFEF9F;
     border: 0.15rem dashed black;
     padding: 1rem;
+    margin-bottom: 1rem;
     flex-grow: 1;
+    border-radius: 1rem;
 }
 
 .upload-area {
     display: flex;
     justify-content: center;
+    align-items: center;
     flex-direction: column;
+    padding: 1rem;
 }
 
 .upload-area p {
-    font-size: 0.75rem;
+    font-size: 0.70rem;
     font-family: canvasans-regular;
-}
-.MUupload img {
-    display:flex;
-    align-items: center;
-    justify-content: center;
+    text-align: center;
 }
 
-.upload-wrapper {
-    display: flex;
-    justify-content: center;
-}
-#file-upload-btn {
-    width: 200px;
-}
-#file-upload-btn::-webkit-file-upload-button {
-    width: 100%;
-    padding: 1.5rem 2rem;
-    border: none;
-    border-radius: 2rem;
+.upload-area img {
+    width: 8rem;
+    height: auto;
 }
 
 /* ----------- Buttons ----------- */
 .MUbuttons {
-    width: 100%;
     display: flex;
-    margin: 1.5rem 0;
-    justify-content: center;
     flex-direction: column;
+    margin-top: auto;
+    flex-shrink: 0;
+    width: 100%;
+    gap: 1rem;
     border-radius: 3rem;
 }
 
@@ -148,12 +144,11 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0.5rem 0;
 }
 
 .submit{
     font-family: fredoka;
-    font-size: 0.90rem;
+    font-size: 1rem;
     padding: 0.5rem 1rem 0.5rem 1rem;
     text-decoration: none;
     border-radius: 5rem;
@@ -163,7 +158,7 @@ body {
 
 .cancel {
     font-family: fredoka;
-    font-size: 0.75rem;
+    font-size: 0.80rem;
     font-weight: bold;
     border: none;
     background-color: transparent;
