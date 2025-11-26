@@ -91,7 +91,9 @@ nav .logo img {
 
 /* ----------- Body (Content) ----------- */
 body {
+    display: block;
     background-color: #010100;
+    height: 80%;
 }
 
 section {
@@ -100,21 +102,22 @@ section {
     margin-left: 2.5rem;
     margin-right: 1.5rem;
     border-radius: 1rem 0 1rem 1rem ;
-    height: 34rem;
+    height: 100%;
     position: relative;
 }
 
 #picture {
     position: absolute;
-    padding: 4rem 2rem 2rem 6rem;
+    padding: 4% 2% 2% 6%;
 }
 
 #picture img {
-    width: 35rem;
-    height: 20rem;
+    width: 55rem;
+    height: 30rem;
     border: 0.1rem solid #010100;
     border-radius: 2rem;
     object-fit: cover;
+    margin-left: 1%;
 }
 
 #catchPhrase {
