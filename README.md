@@ -1,8 +1,8 @@
 # MasterImage Finals Project
 
 ## Running the project
-- npm start
-- access http://localhost:3000 in your browser
+- open terminal and type "npm start"
+- access "http://localhost:3000" in your browser
 
 ## Getting started
 
