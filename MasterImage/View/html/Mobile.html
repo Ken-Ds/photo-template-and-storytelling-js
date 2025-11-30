@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Master Image</title>
+        <link rel="stylesheet" type="text/css" href="../css/Mobile.css"
+    </head>
+    <body>
+        <header>
+            <nav class="navbar">
+                <div class="logo">
+                    <img src="..\assets\images\logo.png">
+                </div>
+            </nav>   
+        </header>
+    
+        <main class="content">
+    
+            <div class="main-wrapper">
+                <div class="page-title">
+                    Upload Your Photo Here
+                </div>
+                <div class="MUupload">
+                    <form class="upload-area" enctype="multipart/form-data">
+                            <input type="file" id="upload" accept=".png, .jpg, .jpeg" hidden>
+                            <label for="upload">
+                                <img src="../assets/images/pic-placeholder.png">
+                                <p>Tap to select from Gallery or Camera.
+                                <br>.PNG, .JPEG, .JPG up to 10MB</p>
+                            </label>
+                    </form>
+                    <img src="../assets/images/family-portrait.jpg" id="preview">
+                </div>
+        
+                <div id="filewrapper">
+                    <h3 class="uploaded">Image Successfully Chosen!</h3>
+                    <div class="showfilebox">
+                        <div class="left">
+                            <div class="file-size">10 MB</div>
+                            <div class="file-name">Sample_file.png</div>
+                        </div>
+                        <div class="right">
+                            <img src="../assets/images/deletebtn.png" id="delete">
+                        </div>
+                    </div>
+                </div>
+                <div class="MUbuttons">
+                    <button id="submitMU" class="submit" type="button">
+                        Submit
+                        <img src="../assets/images/nextbtn.png" alt=""> 
+                    </button>
+                    <button id="cancelMU" class="cancel" type="button">
+                        Cancel 
+                    </button>
+                </div>
+            </div>
+        </main>
+    </body>
+
+    <script>
+        const imgInput = document.getElementById('upload');
+        const deleteBtn = document.getElementById('delete');
+        const imgPreview = document.getElementById('preview');
+        const fileBar = document.getElementById('filewrapper');
+        const fileName = document.querySelector('.file-name');
+        const fileSize = document.querySelector('.file-size');
+        const uploadArea = document.querySelector('.upload-area');
+        const submitBtn = document.getElementById('submitMU')
+        let selectedFile = null;
+
+        deleteBtn.addEventListener('click', removeFile)
+        imgInput.addEventListener('change', preview);
+        imgInput.addEventListener('change', showFileBar)
+
+        function preview(event){
+            selectedFile = event.target.files[0];
+            var fileReader = new FileReader;
+            fileReader.readAsDataURL(selectedFile);
+            fileReader.onload = function() {
+                var result = fileReader.result;
+                imgPreview.setAttribute('src', result);
+                imgPreview.style.display = "flex";
+                uploadArea.style.display= "none";
+            }
+        }
+
+        function showFileBar (event){
+            if (selectedFile) {
+                fileName.textContent = selectedFile.name;
+                var fileSizeBytes = selectedFile.size;
+                fileSizeMB = fileSizeBytes / (1024 * 1024);
+                fileSize.textContent = fileSizeMB.toFixed(2) + " MB";
+                fileBar.style.display = 'flex'; 
+            }
+        }
+
+        function removeFile() {
+            console.log('clicked delete')
+            selectedFile=null;
+            imgInput.value = '';
+            imgPreview.style.display='none';
+            fileBar.style.display = 'none';
+            uploadArea.style.display = 'flex';
+        }
+
+        submitBtn.addEventListener('click', async function(event) {
+            if (!selectedFile) {
+                alert("Please select a file first!");
+                return;
+            }
+            const formData = new FormData();
+            // 'image' is the key name Node.js will look for
+            formData.append('image', selectedFile); 
+
+            try {
+                submitBtn.textContent = "Uploading..."; // Feedback
+                
+                const response = await fetch('/upload-endpoint', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (response.ok) {
+                    alert("Upload Successful!");
+                    // Optional: Redirect or clear form here
+                } else {
+                    alert("Upload failed.");
+                }
+            } catch (error) {
+                console.error(error);
+                alert("Error uploading file.");
+            } finally {
+                submitBtn.textContent = "Submit"; // Reset button text
+            }
+        });
+    </script>
+</html>
