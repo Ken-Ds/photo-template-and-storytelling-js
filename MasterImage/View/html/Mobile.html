@@ -22,7 +22,7 @@
                     Upload Your Photo Here
                 </div>
                 <div class="MUupload">
-                    <form class="upload-area">
+                    <form class="upload-area" enctype="multipart/form-data">
                             <input type="file" id="upload" accept=".png, .jpg, .jpeg" hidden>
                             <label for="upload">
                                 <img src="../assets/images/pic-placeholder.png">
@@ -66,15 +66,17 @@
         const fileName = document.querySelector('.file-name');
         const fileSize = document.querySelector('.file-size');
         const uploadArea = document.querySelector('.upload-area');
+        const submitBtn = document.getElementById('submitMU')
+        let selectedFile = null;
 
         deleteBtn.addEventListener('click', removeFile)
         imgInput.addEventListener('change', preview);
         imgInput.addEventListener('change', showFileBar)
 
         function preview(event){
-            var fileObject = this.files[0];
+            selectedFile = event.target.files[0];
             var fileReader = new FileReader;
-            fileReader.readAsDataURL(fileObject);
+            fileReader.readAsDataURL(selectedFile);
             fileReader.onload = function() {
                 var result = fileReader.result;
                 imgPreview.setAttribute('src', result);
@@ -84,11 +86,9 @@
         }
 
         function showFileBar (event){
-            var inputElement = event.target;
-            var fileObject = inputElement.files[0];
-            if (fileObject) {
-                fileName.textContent = fileObject.name;
-                var fileSizeBytes = fileObject.size;
+            if (selectedFile) {
+                fileName.textContent = selectedFile.name;
+                var fileSizeBytes = selectedFile.size;
                 fileSizeMB = fileSizeBytes / (1024 * 1024);
                 fileSize.textContent = fileSizeMB.toFixed(2) + " MB";
                 fileBar.style.display = 'flex'; 
@@ -97,10 +97,42 @@
 
         function removeFile() {
             console.log('clicked delete')
+            selectedFile=null;
             imgInput.value = '';
             imgPreview.style.display='none';
             fileBar.style.display = 'none';
             uploadArea.style.display = 'flex';
         }
+
+        submitBtn.addEventListener('click', async function(event) {
+            if (!selectedFile) {
+                alert("Please select a file first!");
+                return;
+            }
+            const formData = new FormData();
+            // 'image' is the key name Node.js will look for
+            formData.append('image', selectedFile); 
+
+            try {
+                submitBtn.textContent = "Uploading..."; // Feedback
+                
+                const response = await fetch('/upload-endpoint', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (response.ok) {
+                    alert("Upload Successful!");
+                    // Optional: Redirect or clear form here
+                } else {
+                    alert("Upload failed.");
+                }
+            } catch (error) {
+                console.error(error);
+                alert("Error uploading file.");
+            } finally {
+                submitBtn.textContent = "Submit"; // Reset button text
+            }
+        });
     </script>
 </html>
