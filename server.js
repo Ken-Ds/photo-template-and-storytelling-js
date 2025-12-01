@@ -10,11 +10,9 @@ app.get("/", (req, res) => {
 });
 
 const storage = multer.diskStorage({
-  destination: './uploads/', // Create this folder in your project root!
+  destination: './MasterImage/View/assets/uploads/',
   filename: (req, file, cb) => {
-      // Name file: timestamp + original extension
-      const uniqueName = Date.now() + path.extname(file.originalname);
-      cb(null, uniqueName);
+      cb(null,  file.originalname);
   }
 });
 

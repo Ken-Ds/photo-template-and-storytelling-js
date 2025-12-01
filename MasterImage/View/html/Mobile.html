@@ -4,19 +4,18 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Master Image</title>
-        <link rel="stylesheet" type="text/css" href="../css/Mobile.css"
+        <link rel="stylesheet" type="text/css" href="../css/Mobile.css">
     </head>
     <body>
         <header>
             <nav class="navbar">
                 <div class="logo">
-                    <img src="..\assets\images\logo.png">
+                    <img src="../assets/images/logo.png">
                 </div>
             </nav>   
         </header>
     
         <main class="content">
-    
             <div class="main-wrapper">
                 <div class="page-title">
                     Upload Your Photo Here
@@ -56,6 +55,10 @@
                 </div>
             </div>
         </main>
+
+        <footer>
+            <p>©2025. Grow A Thesis. All Rights Reserved.</p>
+        </footer>
     </body>
 
     <script>
@@ -123,7 +126,8 @@
 
                 if (response.ok) {
                     alert("Upload Successful!");
-                    // Optional: Redirect or clear form here
+                    const filename = selectedFile.name;
+                    window.location.href= `UploadSuccessfully.html?image=${encodeURIComponent(filename)}`;
                 } else {
                     alert("Upload failed.");
                 }

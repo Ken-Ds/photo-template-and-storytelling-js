@@ -48,6 +48,7 @@ header {
 .navbar {
     display: flex;
     justify-content: center;
+    border-radius: 1rem 1rem 0 0;
 }
 
 nav .logo {
@@ -246,4 +247,17 @@ body {
 
 #submitMU img{
     width: 2rem;
+}
+
+/* ----------- Footer ----------- */
+
+footer{
+    text-align: center;
+    right: 2.5rem;
+}
+
+footer p {
+    color: #ffcb01;
+    font-family: montserrat-light;
+    font-size: 0.6rem;
 }
