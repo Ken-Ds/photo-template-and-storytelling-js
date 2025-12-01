@@ -107,19 +107,20 @@ section {
 }
 
 .uploaded-area {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
+    display: block;
+    border-radius: 12px;
+    max-height: 50rem;
     margin: 1rem;
-    border: 0.15rem solid black;
     background-color: #FFEF9F;
+    padding: 1rem;
 }
 
 .uploaded-area img {
+    border: 0.15rem solid black;
     display: block;
     margin: auto;
-    width: 70%;
-    height: 70%;
+    width: auto;
+    max-height: 25rem;
 }
 
 .content h2 {
