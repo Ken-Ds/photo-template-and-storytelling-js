@@ -132,6 +132,9 @@ section #img-stars {
 
 #qr-countdown #img-countdown {
     height: 8rem;
+    position: absolute;
+    margin-right: 2rem;
+    margin-bottom: 1rem;
 }
 
 #qr-right {
@@ -147,13 +150,14 @@ section #img-stars {
     height: 10rem;
     width: 10rem;
     right: -1rem;
-
     z-index: 2;
 }
 
 
 #qr-right #img-qr-code {
-    align-self: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 30rem;
     height: 30rem;
 }
@@ -165,6 +169,89 @@ section #img-stars {
     bottom: 0rem;
     z-index: 2;
     left: -1rem;
+}
+
+/* Styles for the Countdown Timer Display */
+#timer-display {
+    font-family: 'montserrat-bold', sans-serif;
+    font-size: 3rem;
+    color: #d90429; /* Red color matching the theme */
+    margin-top: 10px;
+    text-align: center;
+    background-color: #ffcb01;
+    z-index: 3;
+    border-radius: 2rem;
+    margin-right: 5rem;
+    margin-bottom: 0.5rem;
+    width: 4rem;
+}
+
+/* Styles for the Popup Modal */
+#timeout-modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5); /* Black w/ opacity */
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    padding: 40px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    text-align: center;
+    border-radius: 15px;
+    font-family: 'montserrat-medium', sans-serif;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.modal-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.modal-text {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 30px;
+    line-height: 1.5;
+}
+
+.modal-timer-icon {
+    color: #ff2a2a; /* Bright red for icon */
+    font-size: 60px;
+    width: 20rem;
+    position: relative;
+    display: inline-block;
+}
+
+.modal-timer-text {
+    position: absolute;
+    top: 55%;
+    left: 41%;
+    transform: translate(-50%, -50%);
+    font-size: 18px;
+    font-weight: bold;
+    color: #ff2a2a;
+    background: white; /* To ensure text is readable over icon lines if needed */
+    padding: 2px;
+    border-radius: 2rem;
+    width: 1.6rem;
+}
+
+#timeout-modal #img-countdown-popup{
+    height: 4rem;
+    position: absolute;
+    left: 32%;
+    top: -2.2rem;
 }
 
 footer{

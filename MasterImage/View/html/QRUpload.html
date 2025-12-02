@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Master Image</title>
         <link rel="stylesheet" type="text/css" href="../css/QRUpload.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     </head>
     <body>
         
@@ -32,6 +33,7 @@
                 <section id="qr-countdown">
                     
                     <img src="../assets/images/qr-countdown.png" alt="Countdown Decoration" id="img-countdown">
+                    <div id="timer-display">30</div>
                     
                 </section>
                 
@@ -39,14 +41,38 @@
 
             <div id="qr-right">
                 <img src="../assets/images/qr-upper-right-corner.png" alt="Upper Right Corner Decoration" id="img-upper-right-corner">
-                <img src="../assets/images/qr_code.svg" alt="No QR Code" id="img-qr-code">
+
+                 <!-- Container for the QR code -->
+                <div id="img-qr-code">
+                
+                </div>
                 <img src="../assets/images/qr-bottom-left-corner.png" alt="Bottom Left Corner Decoration" id="img-bottom-left-corner">
             </div>
 
         </section>
 
+        <div id="timeout-modal">
+            <div class="modal-content">
+                <div class="modal-title">Time limit reached...</div>
+                <div class="modal-text">
+                    Time limit has been reached 0.<br>
+                    You will redirected to homepage after:
+                </div>
+                <div class="modal-timer-icon">
+                    <i class="fa-solid fa-stopwatch"></i>
+                    <img src="../assets/images/qr-countdown.png" alt="Countdown Decoration" id="img-countdown-popup">
+                    <div class="modal-timer-text"><span id="popup-countdown">3</span></div>
+                </div>
+            </div>
+        </div>
+
     </body>
     <footer>
         <p>©2025. Grow A Thesis. All Rights Reserved.</p>
     </footer>
+
+    <script src="../js/QRUpload.js">
+        
+    </script>
+
 </html>
