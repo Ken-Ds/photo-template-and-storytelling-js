@@ -1,6 +1,9 @@
 # MasterImage Finals Project
 
-
+## Running the project
+- install multer with "npm install express multer"
+- open terminal and type "npm start"
+- access "http://localhost:3000" in your browser
 
 ## Getting started
 

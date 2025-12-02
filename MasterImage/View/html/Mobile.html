@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Master Image</title>
+        <link rel="stylesheet" type="text/css" href="../css/Mobile.css">
+    </head>
+    <body>
+        <header>
+            <nav class="navbar">
+                <div class="logo">
+                    <img src="../assets/images/logo.png">
+                </div>
+            </nav>   
+        </header>
+    
+        <main class="content">
+            <div class="main-wrapper">
+                <div class="page-title">
+                    Upload Your Photo Here
+                </div>
+                <div class="MUupload">
+                    <form class="upload-area" enctype="multipart/form-data">
+                            <input type="file" id="upload" accept=".png, .jpg, .jpeg" hidden>
+                            <label id="upload-label" for="upload">
+                                <img src="../assets/images/pic-placeholder.png" >
+                                <p>Tap to select from Gallery or Camera.
+                                <br>.PNG, .JPEG, .JPG up to 10MB</p>
+                            </label>
+                    </form>
+                    <p id="error-message">Sample</p>
+                    <img src="../assets/images/family-portrait.jpg" id="preview">
+                </div>
+        
+                <div id="filewrapper">
+                    <h3 class="uploaded">Image Successfully Chosen!</h3>
+                    <div class="showfilebox">
+                        <div class="left">
+                            <div class="file-size">10 MB</div>
+                            <div class="file-name">Sample_file.png</div>
+                        </div>
+                        <div class="right">
+                            <img src="../assets/images/deletebtn.png" id="delete">
+                        </div>
+                    </div>
+                </div>
+                <div class="MUbuttons">
+                    <button id="submitMU" class="submit" type="button">
+                        Submit
+                        <img src="../assets/images/nextbtn.png" alt=""> 
+                    </button>
+                    <button id="cancelMU" class="cancel" type="button">
+                        Cancel 
+                    </button>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>©2025. Grow A Thesis. All Rights Reserved.</p>
+        </footer>
+    </body>
+
+    <script src="../js/Mobile.js"></script>
+</html>
