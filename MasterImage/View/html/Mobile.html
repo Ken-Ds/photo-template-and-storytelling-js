@@ -4,19 +4,18 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Master Image</title>
-        <link rel="stylesheet" type="text/css" href="../css/Mobile.css"
+        <link rel="stylesheet" type="text/css" href="../css/Mobile.css">
     </head>
     <body>
         <header>
             <nav class="navbar">
                 <div class="logo">
-                    <img src="..\assets\images\logo.png">
+                    <img src="../assets/images/logo.png">
                 </div>
             </nav>   
         </header>
     
         <main class="content">
-    
             <div class="main-wrapper">
                 <div class="page-title">
                     Upload Your Photo Here
@@ -24,12 +23,13 @@
                 <div class="MUupload">
                     <form class="upload-area" enctype="multipart/form-data">
                             <input type="file" id="upload" accept=".png, .jpg, .jpeg" hidden>
-                            <label for="upload">
-                                <img src="../assets/images/pic-placeholder.png">
+                            <label id="upload-label" for="upload">
+                                <img src="../assets/images/pic-placeholder.png" >
                                 <p>Tap to select from Gallery or Camera.
                                 <br>.PNG, .JPEG, .JPG up to 10MB</p>
                             </label>
                     </form>
+                    <p id="error-message">Sample</p>
                     <img src="../assets/images/family-portrait.jpg" id="preview">
                 </div>
         
@@ -56,83 +56,11 @@
                 </div>
             </div>
         </main>
+
+        <footer>
+            <p>©2025. Grow A Thesis. All Rights Reserved.</p>
+        </footer>
     </body>
 
-    <script>
-        const imgInput = document.getElementById('upload');
-        const deleteBtn = document.getElementById('delete');
-        const imgPreview = document.getElementById('preview');
-        const fileBar = document.getElementById('filewrapper');
-        const fileName = document.querySelector('.file-name');
-        const fileSize = document.querySelector('.file-size');
-        const uploadArea = document.querySelector('.upload-area');
-        const submitBtn = document.getElementById('submitMU')
-        let selectedFile = null;
-
-        deleteBtn.addEventListener('click', removeFile)
-        imgInput.addEventListener('change', preview);
-        imgInput.addEventListener('change', showFileBar)
-
-        function preview(event){
-            selectedFile = event.target.files[0];
-            var fileReader = new FileReader;
-            fileReader.readAsDataURL(selectedFile);
-            fileReader.onload = function() {
-                var result = fileReader.result;
-                imgPreview.setAttribute('src', result);
-                imgPreview.style.display = "flex";
-                uploadArea.style.display= "none";
-            }
-        }
-
-        function showFileBar (event){
-            if (selectedFile) {
-                fileName.textContent = selectedFile.name;
-                var fileSizeBytes = selectedFile.size;
-                fileSizeMB = fileSizeBytes / (1024 * 1024);
-                fileSize.textContent = fileSizeMB.toFixed(2) + " MB";
-                fileBar.style.display = 'flex'; 
-            }
-        }
-
-        function removeFile() {
-            console.log('clicked delete')
-            selectedFile=null;
-            imgInput.value = '';
-            imgPreview.style.display='none';
-            fileBar.style.display = 'none';
-            uploadArea.style.display = 'flex';
-        }
-
-        submitBtn.addEventListener('click', async function(event) {
-            if (!selectedFile) {
-                alert("Please select a file first!");
-                return;
-            }
-            const formData = new FormData();
-            // 'image' is the key name Node.js will look for
-            formData.append('image', selectedFile); 
-
-            try {
-                submitBtn.textContent = "Uploading..."; // Feedback
-                
-                const response = await fetch('/upload-endpoint', {
-                    method: 'POST',
-                    body: formData
-                });
-
-                if (response.ok) {
-                    alert("Upload Successful!");
-                    // Optional: Redirect or clear form here
-                } else {
-                    alert("Upload failed.");
-                }
-            } catch (error) {
-                console.error(error);
-                alert("Error uploading file.");
-            } finally {
-                submitBtn.textContent = "Submit"; // Reset button text
-            }
-        });
-    </script>
+    <script src="../js/Mobile.js"></script>
 </html>

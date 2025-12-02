@@ -48,6 +48,7 @@ header {
 .navbar {
     display: flex;
     justify-content: center;
+    border-radius: 1rem 1rem 0 0;
 }
 
 nav .logo {
@@ -101,12 +102,14 @@ body {
 /* ----------- Upload Area ----------- */
 .MUupload {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     flex-grow: 1;
 }
 
 .upload-area {
+    margin-bottom: 1rem;
     width: 100%;
     height: 100%;
     display: flex;
@@ -127,7 +130,7 @@ body {
 
 .upload-area p {
     font-size: 0.70rem;
-    font-family: canvasans-regular;
+    font-family: 'canvasans-regular';
     text-align: center;
 }
 
@@ -143,6 +146,15 @@ body {
     border: 0.15rem solid black;
     flex-grow: 1;
     border-radius: 1rem;
+}
+
+#error-message {
+    display: none;
+    font-size: 0.70rem;
+    color: #B71C1C;
+    font-family: 'canvasans-regular';
+    text-transform: uppercase;
+    font-weight: bold;
 }
 
 /* ----------- Uploaded File ----------- */
@@ -207,7 +219,6 @@ body {
 
 /* ----------- Buttons ----------- */
 .MUbuttons {
-    margin-top: 1rem;
     display: flex;
     flex-direction: column;
     flex-shrink: 0;
@@ -246,4 +257,17 @@ body {
 
 #submitMU img{
     width: 2rem;
+}
+
+/* ----------- Footer ----------- */
+
+footer{
+    text-align: center;
+    right: 2.5rem;
+}
+
+footer p {
+    color: #ffcb01;
+    font-family: montserrat-light;
+    font-size: 0.6rem;
 }
