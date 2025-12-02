@@ -35,12 +35,5 @@
         </footer>
     </body>
     
-    <script>
-        const params = new URLSearchParams(window.location.search);
-        const imageName = params.get('image');
-    
-        if (imageName) {
-            document.getElementById('uploaded-img').src = '../assets/uploads/' + imageName;
-        }
-    </script>
+    <script src="../js/UploadSuccessfully.js"></script>
 </html>
