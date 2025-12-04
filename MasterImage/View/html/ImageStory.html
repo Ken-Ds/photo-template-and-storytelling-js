@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Master Image</title>
         <link rel="stylesheet" type="text/css" href="../css/ImageStory.css"/>
+        <script src="../js/ImageStory.js"></script>
     </head>
     <body>
         <header>
@@ -17,38 +18,6 @@
                 </div>
             </nav>   
         </header>
-        <section class="content">
-            <section id="tutorial">
-                
-                <ol id="how-to">
-                    <li>Scan the provided QR Code to upload a picture from 
-                        your phone. NOTE: You are given 30 seconds to accomplish this step.</li>
-                    <li>After uploading the photo, choose a template for your photo.</li>
-                    <li>Choose a language for the story caption.</li>
-                    <li>Choose your preferred story.</li>
-                    <li>Choose to save the image story or not.</li>
-                    <li>Scan the provided QR code to save the image story.</li>
-                </ol>
-                <div class="navigation-buttons">
-                    <button id="previous-tutorial"><img src="../assets/images/previous.png">Back</button>
-                    <button id="next-tutorial" onclick="nextTutorial()">Next<img src="../assets/images/next.png"></button>
-                </div>
-            </section>
-        </section>
-        <script>
-            /* This function will be used  by the next button under the Tutorial Section */
-            function previousTutorial(){
-                document.getElementById('title-tutorial').style.display = 'none';
-                document.getElementById('tutorial').style.display = 'none';
-            }
-            
-            function nextTutorial(){
-                document.getElementById('title-tutorial').style.display = 'none';
-                document.getElementById('tutorial').style.display = 'none';
-            }
-                
-        </script>
-
 
         <section class="UserAgreement">
             
@@ -151,6 +120,42 @@
                 </div>
             </div>
         </section>
+
+        <section class="content">
+            <section id="tutorial">
+                
+                <ol id="how-to">
+                    <li>Scan the provided QR Code to upload a picture from 
+                        your phone. NOTE: You are given 30 seconds to accomplish this step.</li>
+                    <li>After uploading the photo, choose a template for your photo.</li>
+                    <li>Choose a language for the story caption.</li>
+                    <li>Choose your preferred story.</li>
+                    <li>Choose to save the image story or not.</li>
+                    <li>Scan the provided QR code to save the image story.</li>
+                </ol>
+                <div class="navigation-buttons">
+                    <button id="previous-tutorial" onclick="previousTutorial()"><img src="../assets/images/previous.png">Back</button>
+                    <button id="next-tutorial" onclick="nextTutorial()">Next<img src="../assets/images/next.png"></button>
+                </div>
+            </section>
+        </section>
+        <script>
+            /* This function will be used  by the next button under the Tutorial Section */
+            function previousTutorial(){
+                document.querySelector('.UserAgreement').style.display = 'block';
+                document.getElementById('UA').style.display = 'block';
+                document.querySelector('.content').style.display = 'none';
+                document.getElementById('title-tutorial').style.display = 'none';
+                document.getElementById('tutorial').style.display = 'none';
+            }
+            
+            function nextTutorial(){
+                document.querySelector('.content').style.display = 'none';
+                document.getElementById('title-tutorial').style.display = 'none';
+                document.getElementById('tutorial').style.display = 'none';
+            }
+                
+        </script>
 
     </body>
 </html>
