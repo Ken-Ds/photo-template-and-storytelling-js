@@ -84,6 +84,17 @@ section {
     position: relative;
 }
 
+footer{
+    position: absolute;
+    right: 2.5rem;
+}
+
+footer p {
+    color: #ffcb01;
+    font-family: montserrat-light;
+    font-size: 0.6rem;
+}
+
 
 /* ----------- CSS of Tutorial ----------- */
 
