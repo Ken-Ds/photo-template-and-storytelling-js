@@ -37,9 +37,9 @@ html {
 /* ----------- Navbar ----------- */
 header {
     align-items: center;
-    padding-top: 1.5rem;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+    padding-top: 1.5%;
+    padding-left: 2.5%;
+    padding-right: 2.5%;
 }
 
 .navbar {
@@ -49,9 +49,9 @@ header {
 
 nav .navbar-buttons {
     text-align: right;
-    width: 100%;
+    width: 100vw;
     padding-top: 1.5rem;
-    padding-left: 2rem;
+    padding-left: 2.5%;
     padding-right: 3rem;
     font-family: fredoka;
     font-size: 1.75rem;
@@ -88,61 +88,63 @@ nav .logo img {
     margin-right: 1.5rem;
 }
 
-
 /* ----------- Body (Content) ----------- */
 body {
     display: block;
     background-color: #010100;
-    height: 80%;
+    height: 90vh;
+    overflow: hidden;
 }
 
 section {
     display: flex;
     background-color: #ffcb01;
-    margin-left: 2.5rem;
-    margin-right: 1.5rem;
+    margin-left: 2.5vw;
+    margin-right: 2.5vw;
     border-radius: 1rem 0 1rem 1rem ;
-    height: 100%;
+    height: 75vh;
     position: relative;
 }
 
 #picture {
     position: absolute;
-    padding: 4% 2% 2% 6%;
+    width: 30vw;
+    top: 10vh;
+    left: 7vw;
+    border-radius: 2rem;
 }
 
 #picture img {
-    width: 55rem;
-    height: 30rem;
-    border: 0.1rem solid #010100;
+    width: 37vw;
+    height: 44vh;
     border-radius: 2rem;
+    border: 0.1rem solid #010100;
     object-fit: cover;
-    margin-left: 1%;
 }
 
 #catchPhrase {
     position: absolute;
-    top: 0rem;
-    right: 8rem;
+    top: 0vh;
+    right: 6vw;
     font-family: montserrat-bold;
-    font-size: 3.6rem;
-    width: 36rem;
+    font-size: 3.6vw;
+    width: 36vw;
     color: #ea1e0e;
 }
 
 #caption {
     position: absolute;
-    bottom: 0.5rem;
-    left: 15rem;
+    bottom: 2vh;
+    left: 15vw;
     font-family: montserrat-bold;
-    font-size: 2.4rem;
-    width: 25rem;
+    font-size: 2vw;
+    width: 40vw;
 }
 
 #start {
     position: absolute;
-    bottom: 10rem;
-    right: 15rem;
+    bottom: 20vh;
+    right: 15vw;
 }
 
 #start .getStarted {
@@ -159,7 +161,7 @@ section {
 }
 
 #start .getStarted:hover {
-    background-color: #ea1e0e;
+    background-color: #00bf63;
 }
 
 #start .getStarted img {
@@ -168,16 +170,16 @@ section {
 
 img[alt="design1"]{
     position: absolute;
-    top: 0.4rem;
-    right: 21rem;
-    width: 33rem;
+    top: 0.4vh;
+    right: 20vw;
+    width: 33vw;
 }
 
 img[alt="design2"]{
     position: absolute;
-    bottom: 4rem;
-    left: 0.4rem;
-    width: 12rem;
+    bottom: 9vh;
+    left: 0.6vw;
+    width: 12vw;
 }
 
 footer{
