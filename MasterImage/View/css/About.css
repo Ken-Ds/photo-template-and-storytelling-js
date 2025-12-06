@@ -37,9 +37,9 @@ html {
 /* ----------- Navbar ----------- */
 header {
     align-items: center;
-    padding-top: 1.5rem;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+    padding-top: 1.5%;
+    padding-left: 2.5%;
+    padding-right: 2.5%;
 }
 
 .navbar {
@@ -49,9 +49,9 @@ header {
 
 nav .navbar-buttons {
     text-align: right;
-    width: 100%;
+    width: 100vw;
     padding-top: 1.5rem;
-    padding-left: 2rem;
+    padding-left: 2.5%;
     padding-right: 3rem;
     font-family: fredoka;
     font-size: 1.75rem;
@@ -66,7 +66,7 @@ nav .navbar-button {
     padding: 2rem;
 }
 
-nav .navbar-buttons #home{
+nav .navbar-buttons #about{
     color: #eb1e0e;
 }
 
@@ -92,15 +92,114 @@ nav .logo img {
 body {
     display: block;
     background-color: #010100;
-    height: 80%;
+    height: 90vh;
+    overflow: hidden;
 }
 
 section {
-    display: flex;
+    display: grid;
     background-color: #ffcb01;
-    margin-left: 2.5rem;
-    margin-right: 1.5rem;
+    margin-left: 2.5vw;
+    margin-right: 2.5vw;
     border-radius: 1rem 0 1rem 1rem ;
-    height: 100%;
+    height: 75vh;
     position: relative;
+    grid-template-columns: auto auto auto;
+    justify-content: center;
+    gap: 5vw;
+}
+
+.selector {
+    margin-top: 8vh;
+    width: 25vw;
+    height: 60vh;
+    border: 0.1rem solid gainsboro;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.selector .selector-name {
+    opacity: 100;
+    color: #ffcb01;
+    font-family: montserrat-bold;
+    font-size: 5vh;
+    padding-top: 30vh;
+    text-align: center;
+}
+
+.selector img {
+    position: absolute;
+    width: 8vw;
+    margin-top: 15vh;
+    margin-left: 8.5vw;
+}
+
+.selector:hover{
+    background-color: rgba(235, 30, 14, 1);
+}
+
+#about-title {
+    font-family: montserrat-black;
+    font-size: 2.5vw;
+    color: #eb1e0e;
+    width: auto;
+    margin-top: 1vh;
+    display: none;
+    position: absolute;
+    right: 4vw;
+}
+
+.about-content {
+    margin-top: 8vh;
+    margin-left: 10vw;
+    width: 87vw;
+    height: 60vh;
+    border: 0.1rem solid gainsboro;
+    background-color: rgba(255, 255, 255, 0.5);
+    display: none;
+    overflow: scroll;
+}
+
+.about-content::-webkit-scrollbar {
+    width: 0.4vw;
+}
+
+.about-content::-webkit-scrollbar-track {
+    background: none;
+}
+
+.about-content::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 1rem;
+}
+
+.about-content::-webkit-scrollbar-corner {
+    display: none;
+}
+
+#about-shop {
+    align-content: flex-start;
+}
+
+.about-text {
+    font-family: montserrat-medium;
+    font-size: 1.5vw;
+    color: #010100;
+    width: auto;
+    margin-top: 2vh;
+    margin-left: 2vw;
+    margin-right: 2vw;
+    margin-bottom: 0;
+    text-align: justify;
+    text-indent: 2vw;
+}
+
+footer{
+    position: absolute;
+    right: 2.5rem;
+}
+
+footer p {
+    color: #ffcb01;
+    font-family: montserrat-light;
+    font-size: 0.6rem;
 }
