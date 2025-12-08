@@ -36,23 +36,128 @@
             </div>
             <p id="about-title"></p>
             <div class="about-content" id="about-shop">
-                <p class="about-text">Master Image Photo Center is a photo shop that began its journey on June 1, 2013, when German P. Lumanglas took over what was once known
+                <div class="image-container">
+                    <img src="../assets/images/owner.jpg">
+                </div>
+                <div class="text-container" id="paragraph1">
+                    <p class="about-text">Master Image Photo Center is a photo shop that began its journey on June 1, 2013, when German P. Lumanglas took over what was once known
                      as KODAK under a different owner. Located on the 3rd Floor of the Macli-ing Building in Poblacion, Bontoc, Mountain Province, the shop has grown into a 
                      trusted place for photo editing and printing services. Operating from 8:00 AM onwards, it continues to serve the community with dedication and passion.
-                </p>
-                <p class="about-text">The name “Master Image” reflects Mr. Lumanglas’ expertise - “Master” for his skill in various editing techniques, and “Image” for his ability to perfect 
+                    </p>
+                </div>
+                <div class="text-container" id="paragraph2">
+                    <p class="about-text">The name “Master Image” reflects Mr. Lumanglas’ expertise - “Master” for his skill in various editing techniques, and “Image” for his ability to perfect 
                     lighting and details to produce high-quality photographs. His commitment to excellent craftsmanship and friendly service has earned the shop a reputation 
                     for delivering polished, premium results.
-                </p>
-                <p class="about-text">
+                    </p>
+                </div>
+                <div class="text-container" id="paragraph3">
+                    <p class="about-text">
                     What sets Master Image Photo Center apart is its ongoing effort to innovate and enhance the customer experience. Aside from offering dependable service
                      and quality outputs, the shop now features its own customer entertainment app, designed to keep clients engaged while waiting for their IDs to be processed.
                      The app also includes an AI-powered story generator that creates unique narratives based on each photo, making every visit more enjoyable and memorable.
+                    </p>
+                </div>
+            </div>
+            <div class="about-content" id="about-app">
+                <p class="about-text">
+                    The Master Image App was developed as a natural extension of the shop’s mission to combine creativity and technology in a meaningful way. While the shop 
+                    continues to deliver high-quality photographs and reliable service, the app introduces a modern digital experience that brings customers closer to the 
+                    creative process. Instead of simply waiting for their photos, users can interact with the app and discover new ways to appreciate their images.
                 </p>
+                <p class="about-text">
+                    At the heart of the app is a unique AI-powered Story Generator, which transforms each photo into a short, imaginative story - giving customers a fun and 
+                    personal connection to their images while also describing key details of the photo. Built with ease of use and user privacy in mind, the Master Image App 
+                    provides an enjoyable and secure space where customers can explore, learn, and be entertained. More than just a waiting-time companion, the app represents 
+                    the shop’s vision of embracing innovation and enhancing every customer’s experience through creativity and technology.
+                </p>
+                <p class="about-text">
+                    <span>Key Features: </span><br>
+                    <ul>
+                    <li>Story Generator - Creates a unique story for each photo, highlighting its details and making the waiting experience enjoyable.</li>
+                    <li>Customer Entertainment Hub - Interactive elements to engage clients while they wait.</li>
+                    <li>User-Friendly Interface - Simple and accessible for all ages</li>
+                    </ul>
+                </p>
+            </div>
+            <div class="about-content" id="about-developers">
+                <div class="carousel">
+                    <div class="developer fade">
+                        <img src="../assets/images/owner.jpg" alt="">
+                        <h2>Yenzy Hynna Lumanglas</h2>
+                        <p>Project Manager</p>
+                    </div>
+                    <div class="developer fade">
+                        <img src="../assets/images/owner.jpg" alt="">
+                        <h2>Marc Jansen Galvan</h2>
+                        <p>Front-End Developer</p>
+                    </div>
+                    <div class="developer fade">
+                        <img src="../assets/images/owner.jpg" alt="">
+                        <h2>Emily Sotelo</h2>
+                        <p>Front-End Developer</p>
+                    </div>
+                    <div class="developer fade">
+                        <img src="../assets/images/owner.jpg" alt="">
+                        <h2>Kendrick Evangelista</h2>
+                        <p>Full-Stack Developer</p>
+                    </div>
+                    <div class="developer fade">
+                        <img src="../assets/images/owner.jpg" alt="">
+                        <h2>Sheryn Ann Cagulada</h2>
+                        <p>Full-Stack Developer</p>
+                    </div>
+                    <div class="developer fade">
+                        <img src="../assets/images/owner.jpg" alt="">
+                        <h2>Ray Daniel Roque</h2>
+                        <p>Back-End Developer</p> 
+                    </div>
+                    <div class="developer fade">
+                        <img src="../assets/images/owner.jpg" alt="">
+                        <h2>Krishianne Mae Alcaparras</h2>
+                        <p>Back-End Developer</p>
+                    </div>
+
+                    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                </div>
+                <div class="motivation">
+                    <p class="about-text">
+                        The Master Image App was created by a team of passionate students from Saint Louis University (Baguio), studying Bachelor of Science in Computer 
+                        Science. Each member contributed their unique skills, from programming and design to problem-solving and testing, to bring the app to life. Through 
+                        this project, the developers gained hands-on experience in combining creativity with technology, learning how to collaborate effectively and overcome 
+                        challenges. Their goal was to apply their knowledge to build a practical and innovative solution that supports the shop while also expanding their own 
+                        skills and expertise.
+                    </p>
+                </div>
             </div>
         </section>
     </body>
+    <script>
+        let slideIndex = 1;
+            showSlides(slideIndex);
 
+            // Next/previous controls
+            function plusSlides(n) {
+            showSlides(slideIndex += n);
+            }
+
+            // Thumbnail image controls
+            function currentSlide(n) {
+            showSlides(slideIndex = n);
+            }
+
+            function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("developer");
+            if (n > slides.length) {slideIndex = 1}
+            if (n < 1) {slideIndex = slides.length}
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slides[slideIndex-1].style.display = "block";
+            }
+    </script>
     <footer>
         <p>©2025. Grow A Thesis. All Rights Reserved.</p>
     </footer>
