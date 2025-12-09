@@ -101,11 +101,11 @@ submitBtn.addEventListener('click', async function(event) {
             const filename = selectedFile.name;
             window.location.href= `UploadSuccessfully.html?image=${encodeURIComponent(filename)}`;
         } else {
-            alert("Upload failed.");
+            showUploadFailedPopup();
         }
     } catch (error) {
         console.error(error);
-        alert("Error uploading file.");
+        showUploadFailedPopup();
     } finally {
         submitBtn.textContent = "Submit"; // Reset button text
     }

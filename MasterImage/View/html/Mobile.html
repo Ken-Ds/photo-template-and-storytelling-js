@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Master Image</title>
         <link rel="stylesheet" type="text/css" href="../css/Mobile.css">
+        <link rel="stylesheet" type="text/css" href="../css/UploadFailedPopup.css">
     </head>
     <body>
         <header>
@@ -60,7 +61,34 @@
         <footer>
             <p>©2025. Grow A Thesis. All Rights Reserved.</p>
         </footer>
+
+        <div id="uploadFailedPopup" class="popup-overlay">
+        <div class="popup-container">
+            <h2 class="popup-title">Upload Failed</h2>
+            
+            <div class="error-icon">
+            <div class="monitor">
+                <div class="monitor-screen">
+                <div class="error-text">ERROR</div>
+                <div class="error-symbol">✖</div>
+                <div class="error-text">ERROR</div>
+                <div class="error-symbol">✖</div>
+                <div class="error-text">ERROR</div>
+                </div>
+                <div class="monitor-stand"></div>
+                <div class="monitor-base"></div>
+            </div>
+            </div>
+            
+            <div class="popup-buttons">
+            <button class="btn-cancel" onclick="closeUploadFailedPopup()">Cancel</button>
+            <button class="btn-retry" onclick="retryUpload()">Try Again</button>
+            </div>
+        </div>
+        </div>
+
     </body>
 
     <script src="../js/Mobile.js"></script>
+    <script src="../js/UploadFailedPopup.js"></script>
 </html>
