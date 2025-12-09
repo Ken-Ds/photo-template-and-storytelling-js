@@ -1,0 +1,309 @@
+/* ----------- Fonts ----------- */
+@font-face {
+    font-family: 'fredoka';
+    src: url(../assets/fonts/FredokaOne-Regular.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'montserrat-black';
+    src: url(../assets/fonts/Montserrat-Black.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'montserrat-extra-bold';
+    src: url(../assets/fonts/Montserrat-ExtraBold.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'montserrat-bold';
+    src: url(../assets/fonts/Montserrat-Bold.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'montserrat-medium';
+    src: url(../assets/fonts/Montserrat-Medium.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'montserrat-light';
+    src: url(../assets/fonts/Montserrat-Light.ttf) format('truetype');
+}
+
+header {
+    align-items: center;
+    padding-top: 1.5rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+}
+
+nav .navbar-buttons {
+    text-align: right;
+    width: 100%;
+    padding-top: 1.5rem;
+    padding-left: 2rem;
+    padding-right: 3rem;
+    font-family: fredoka;
+    font-size: 1.75rem;
+    background-color: #ffcb01;
+    border-radius: 1rem 1rem 0rem 0rem;
+}
+
+nav .logo {
+    padding-left: 2.5rem;
+    padding-bottom: 1rem;
+    background-color: #010100;
+    border-radius: 0rem 0rem 1rem 0rem;
+    overflow: visible;
+    box-shadow: 5rem 1rem 0 0 #ffcb01;
+}
+
+nav .logo img {
+    width: 10rem;
+    margin-right: 1.5rem;
+}
+
+html {
+    height: 100%;
+    width: 100%;
+}
+
+/* ----------- Body (Content) ----------- */
+body {
+    display: block;
+    background-color: #010100;
+    height: 80%;
+}
+
+section {
+    display: flex;
+    background-color: #ffcb01;
+    margin-left: 2.5rem;
+    margin-right: 1.5rem;
+    border-radius: 1rem 0 1rem 1rem ;
+    min-height: 90%;
+    justify-content: center;
+    gap: 5rem;
+    align-items: center;
+    height: fit-content;
+    margin-top: 0rem;
+}
+
+section #img-stars {
+    height: 20rem;
+    position: absolute;
+    top: 7rem;
+    left: 4rem;
+}
+
+#qr-left {
+    display: flex;
+    flex-direction: column;
+}
+
+#qr-left #qr-text {
+    height: 50%;
+    text-align: center;
+    color: red;
+    font-family: montserrat-bold;
+    font-size: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0rem;
+}
+
+#qr-text #img-heart-line {
+    width: 35rem;
+    display: flex;
+}
+
+#qr-text p {
+    width: 30rem;
+    margin-top: 0;
+}
+
+#qr-left #qr-countdown {
+    height: 50%;
+}
+
+#qr-countdown #img-countdown {
+    height: 8rem;
+    position: absolute;
+    margin-right: 2rem;
+    margin-bottom: 1rem;
+}
+
+#qr-right {
+    display: flex;
+    flex-direction: column;
+    width: 30rem;
+    margin-top: -10rem;
+    position: relative;
+}
+
+#qr-right #img-upper-right-corner {
+    position: absolute;
+    height: 10rem;
+    width: 10rem;
+    right: -1rem;
+    z-index: 2;
+}
+
+
+#qr-right #img-qr-code {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30rem;
+    height: 30rem;
+}
+
+#qr-right #img-bottom-left-corner {
+    position: absolute;
+    height: 10rem;
+    width: 10rem;
+    bottom: 0rem;
+    z-index: 2;
+    left: -1rem;
+}
+
+/* Styles for the Countdown Timer Display */
+#timer-display {
+    font-family: 'montserrat-bold', sans-serif;
+    font-size: 3rem;
+    color: #d90429; /* Red color matching the theme */
+    margin-top: 10px;
+    text-align: center;
+    background-color: #ffcb01;
+    z-index: 3;
+    border-radius: 2rem;
+    margin-right: 5rem;
+    margin-bottom: 0.5rem;
+    width: 4rem;
+}
+
+/* Styles for the Popup Modal */
+#timeout-modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5); /* Black w/ opacity */
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    padding: 40px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    text-align: center;
+    border-radius: 15px;
+    font-family: 'montserrat-medium', sans-serif;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.modal-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.modal-text {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 30px;
+    line-height: 1.5;
+}
+
+.modal-timer-icon {
+    color: #ff2a2a; /* Bright red for icon */
+    font-size: 60px;
+    width: 20rem;
+    position: relative;
+    display: inline-block;
+}
+
+.modal-timer-text {
+    position: absolute;
+    top: 55%;
+    left: 41%;
+    transform: translate(-50%, -50%);
+    font-size: 18px;
+    font-weight: bold;
+    color: #ff2a2a;
+    background: white; /* To ensure text is readable over icon lines if needed */
+    padding: 2px;
+    border-radius: 2rem;
+    width: 1.6rem;
+}
+
+#timeout-modal #img-countdown-popup{
+    height: 4rem;
+    position: absolute;
+    left: 32%;
+    top: -2.2rem;
+}
+
+footer{
+    position: absolute;
+    right: 2.5rem;
+}
+
+footer p {
+    color: #ffcb01;
+    font-family: montserrat-light;
+    font-size: 0.6rem;
+}
+
+/* ----------- Media Query Start ----------- */
+
+@media (max-width: 1024px) {
+    section {
+        height: auto;
+        flex-direction: column;
+        padding-bottom: 4rem;
+    }
+
+    #qr-right{
+        position: relative;
+        padding-top: 5rem;
+        text-align: center;
+    }
+
+
+    #qr-left {
+        position: static;
+        text-align: center;
+        margin-top: 1rem;
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 768px) {
+    nav .navbar-buttons {
+        font-size: 1.3rem;
+        padding: 1rem;
+    }
+
+    nav .logo img {
+        width: 7rem;
+    }
+
+}
+
+@media (max-width: 480px) {
+
+    nav .navbar-button {
+        padding: 1rem;
+    }
+}
