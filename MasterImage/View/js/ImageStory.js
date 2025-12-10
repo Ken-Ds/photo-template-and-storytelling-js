@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (backBtn) {
         backBtn.addEventListener("click", () => {
-            window.location.href = "../html/Index.html";
+            window.location.href = "/";
         });
     }
 
