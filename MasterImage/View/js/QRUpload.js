@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (popupTimeLeft <= 0) {
                 clearInterval(popupTimerInterval);
                         
-                window.location.href = "Index.html"; 
+                window.location.href = "/"; 
             }
         }, 1000);
     }

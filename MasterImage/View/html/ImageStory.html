@@ -149,10 +149,17 @@
                 document.getElementById('tutorial').style.display = 'none';
             }
             
-            function nextTutorial(){
+            function previousTutorial(){
+                document.querySelector('.UserAgreement').style.display = 'block';
+                document.getElementById('UA').style.display = 'block';
                 document.querySelector('.content').style.display = 'none';
                 document.getElementById('title-tutorial').style.display = 'none';
                 document.getElementById('tutorial').style.display = 'none';
+            }
+
+            function nextTutorial(){
+                // ⭐ Redirect to the QR Upload page
+                window.location.href = "/html/QRUpload.html";
             }
 
         </script>
