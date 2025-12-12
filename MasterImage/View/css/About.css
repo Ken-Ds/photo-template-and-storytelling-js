@@ -113,14 +113,14 @@ section {
     margin-top: 8vh;
     width: 25vw;
     height: 60vh;
-    border: 0.1rem solid gainsboro;
+    border: 0.1rem solid #010100;
     background-color: rgba(255, 255, 255, 0.5);
     border-radius: 0.5rem;
 }
 
 .selector .selector-name {
     opacity: 100;
-    color: #ffcb01;
+    color: #010100;
     font-family: montserrat-bold;
     font-size: 5vh;
     padding-top: 30vh;
@@ -134,8 +134,19 @@ section {
     margin-left: 8.5vw;
 }
 
-.selector:hover{
+#selector-shop:hover{
     background-color: rgba(235, 30, 14, 1);
+    -webkit-text-fill-color: white;
+}
+
+#selector-app:hover{
+    background-color: rgba(235, 30, 14, 1);
+    -webkit-text-fill-color: white;
+}
+
+#selector-developers:hover{
+    background-color: rgba(235, 30, 14, 1);
+    -webkit-text-fill-color: white;
 }
 
 #about-title {
@@ -251,20 +262,22 @@ ul {
 .carousel {
     display: grid;
     grid-area: carousel;
-    grid-template-columns: 
-    'developerImg'
-    'developerName'
-    'developerPosition'
-    ;
     width: 40vw;
     background-color: none;
-    justify-content: flex-start;
-    align-items: flex-start;
+    justify-content: center;
+    align-items: center;
+    width: 40vw;
+    height: 60vh;
 }
 
 .developer {
     grid-area: developer;
     display: grid;
+    grid-template-columns: 
+    'developerImg developerImg'
+    'developerName developerName'
+    'developerPosition developerPosition'
+    ;
     justify-content: center;
     align-items: center;
     margin-top: 3vh;
@@ -272,7 +285,7 @@ ul {
 
 .developer img {
     grid-area: developerImg;
-    margin-left: 50%;
+    position: static;
     width: 17vw;
     height: auto;
 }
@@ -303,6 +316,7 @@ ul {
 
 .developer h2 {
     grid-area: developerName;
+    position: static;
     color: #010100;
     font-family: montserrat-bold;
     font-size: 1.5vw;
@@ -311,6 +325,7 @@ ul {
 
 .developer p {
     grid-area: developerPosition;
+    position: static;
     color: #010100;
     font-family: montserrat-medium;
     font-size: 1.5vw;

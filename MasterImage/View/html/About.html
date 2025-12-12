@@ -23,15 +23,15 @@
         </header>
         <section class="content">
             <div class="selector" id="selector-shop">
-                <img src="../assets/images/Shop.png" alt="Shop">
+                <img id="shop-icon" src="../assets/images/Shop-black.png" alt="Shop">
                 <p class="selector-name">Shop</p>
             </div>
             <div class="selector" id="selector-app">
-                <img src="../assets/images/App.png" alt="App">
+                <img id="app-icon" src="../assets/images/App-black.png" alt="App">
                 <p class="selector-name">App</p>
             </div>
             <div class="selector" id="selector-developers">
-                <img src="../assets/images/Developers.png" alt="Developers">
+                <img id="developers-icon" src="../assets/images/Developers-black.png" alt="Developers">
                 <p class="selector-name">Developers</p>
             </div>
             <p id="about-title"></p>
@@ -155,7 +155,7 @@
             for (i = 0; i < slides.length; i++) {
                 slides[i].style.display = "none";
             }
-            slides[slideIndex-1].style.display = "block";
+            slides[slideIndex-1].style.display = "grid";
             }
     </script>
     <footer>

@@ -8,6 +8,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const backBtn = document.getElementById('back-btn');
 
     if (shopBtn) {
+        shopBtn.addEventListener("mouseover", () => {
+            document.getElementById('shop-icon').src = "../assets/images/Shop-white.png"
+        })
+
+        shopBtn.addEventListener("mouseout", () => {
+            document.getElementById('shop-icon').src = "../assets/images/Shop-black.png"
+        })
+
         shopBtn.addEventListener("click", () => {
             document.getElementById('selector-shop').style.display = 'none';
             document.getElementById('selector-app').style.display = 'none';
@@ -21,6 +29,14 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     if (appBtn){
+        appBtn.addEventListener("mouseover", () => {
+            document.getElementById('app-icon').src = "../assets/images/App-white.png"
+        })
+
+        appBtn.addEventListener("mouseout", () => {
+            document.getElementById('app-icon').src = "../assets/images/App-black.png"
+        })
+
         appBtn.addEventListener("click", () =>{
             document.getElementById('selector-shop').style.display = 'none';
             document.getElementById('selector-app').style.display = 'none';
@@ -34,6 +50,14 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     if (developersBtn) {
+        developersBtn.addEventListener("mouseover", () => {
+            document.getElementById('developers-icon').src = "../assets/images/Developers-white.png"
+        })
+
+        developersBtn.addEventListener("mouseout", () => {
+            document.getElementById('developers-icon').src = "../assets/images/Developers-black.png"
+        })
+
         developersBtn.addEventListener("click", () =>{
             document.getElementById('selector-shop').style.display = 'none';
             document.getElementById('selector-app').style.display = 'none';
