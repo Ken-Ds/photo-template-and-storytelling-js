@@ -1,0 +1,124 @@
+/* MobileAlertPopup.css */
+
+/* QR Page Wrapper */
+.qr-page-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+/* QR Message Container */
+.qr-message-container {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 2.5rem 2rem;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    max-width: 500px;
+    width: 90%;
+    animation: fadeInScale 0.4s ease-out;
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* QR Page Title */
+.qr-page-title {
+    font-family: 'montserrat-black', Arial, sans-serif;
+    font-size: 1.75rem;
+    font-weight: 900;
+    color: #000000;
+    margin: 0 0 1.5rem 0;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+/* QR Page Message */
+.qr-page-message {
+    font-family: 'canvasans-regular', Arial, sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #333333;
+    margin: 0 0 2rem 0;
+    padding: 0 1rem;
+}
+
+/* QR Page Error Icon */
+.qr-page-icon {
+    margin: 1.5rem 0 0 0;
+}
+
+.qr-page-monitor {
+    display: inline-block;
+    position: relative;
+}
+
+.qr-page-monitor-screen {
+    background-color: #2a2a2a;
+    border: 8px solid #1a1a1a;
+    border-radius: 8px;
+    width: 160px;
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.qr-page-error-text {
+    color: #ffffff;
+    font-family: 'montserrat-bold', monospace;
+    font-size: 0.875rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.qr-page-error-symbol {
+    color: #ffffff;
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.qr-page-monitor-stand {
+    width: 50px;
+    height: 25px;
+    background-color: #1a1a1a;
+    margin: 0 auto;
+    border-radius: 0 0 4px 4px;
+}
+
+.qr-page-monitor-base {
+    width: 80px;
+    height: 8px;
+    background-color: #1a1a1a;
+    margin: 0 auto;
+    border-radius: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    .qr-message-container {
+        padding: 2rem 1.5rem;
+    }
+
+    .qr-page-title {
+        font-size: 1.5rem;
+    }
+
+    .qr-page-message {
+        font-size: 0.9rem;
+        padding: 0 0.5rem;
+    }
+}

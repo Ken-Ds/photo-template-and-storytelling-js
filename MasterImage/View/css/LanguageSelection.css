@@ -1,0 +1,157 @@
+/* LanguageSelection.css */
+
+/* Language Page Wrapper */
+.language-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 2rem 1.5rem;
+}
+
+/* Language Title */
+.language-title {
+    font-family: 'fredoka', Arial, sans-serif;
+    font-size: 2rem;
+    color: #000000;
+    text-align: center;
+    margin: 0 0 3rem 0;
+    padding-top: 1rem;
+}
+
+/* Language Buttons Container */
+.language-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 400px;
+    flex-grow: 1;
+    justify-content: center;
+}
+
+/* Language Button Styles */
+.lang-btn {
+    font-family: 'fredoka', Arial, sans-serif;
+    font-size: 2rem;
+    padding: 1.5rem 3rem;
+    border: none;
+    border-radius: 5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #000000;
+    background-color: #000000;
+    color: #ffcb01;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* English Button */
+.lang-english {
+    background-color: #000000;
+    color: #ffcb01;
+}
+
+/* Bontok Button */
+.lang-bontok {
+    background-color: #000000;
+    color: #ffcb01;
+}
+
+/* Hover Effects */
+.lang-btn:hover {
+    background-color: #2DD881;
+    color: #000000;
+    transform: translateY(-3px);
+     box-shadow: 0 0 0 4px rgba(45, 216, 129, 0.5);
+}
+
+/* Active/Click State */
+.lang-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Navigation Buttons Container */
+.navigation-buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    gap: 1rem;
+    margin-top: auto;
+}
+
+/* Navigation Button Styles */
+.nav-btn {
+    font-family: 'fredoka', Arial, sans-serif;
+    font-size: 1.25rem;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: #000000;
+    color: #ffcb01;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.nav-btn:hover {
+    background-color: #333333;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.nav-btn:active {
+    transform: translateY(0);
+    background-color: #ea1e0e;
+}
+
+/* Navigation Button Icons */
+.nav-btn img {
+    width: 1.5rem;
+    height: auto;
+    filter: brightness(0) saturate(100%) invert(83%) sepia(47%) saturate(629%) hue-rotate(2deg) brightness(102%) contrast(101%);
+}
+
+/* Back Button */
+.back-btn {
+    margin-right: auto;
+}
+
+/* Next Button */
+.next-btn {
+    margin-left: auto;
+    flex-direction: row-reverse;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    .language-title {
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .lang-btn {
+        font-size: 1.5rem;
+        padding: 1.25rem 2.5rem;
+    }
+
+    .navigation-buttons {
+        flex-direction: column;
+    }
+
+    .nav-btn {
+        width: 100%;
+        justify-content: center;
+        font-size: 1rem;
+        padding: 0.875rem 1.5rem;
+    }
+
+    .next-btn {
+        flex-direction: row;
+    }
+}

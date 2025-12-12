@@ -1,0 +1,173 @@
+/* StoryResult.css */
+
+/* Save Photo Wrapper */
+.save-photo-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding: 2rem 1.5rem;
+    gap: 2rem;
+}
+
+/* Photo Frame */
+.photo-frame {
+    background-color: #E8F4FF;
+    border: 8px solid #000000;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    max-width: 400px;
+    width: 90%;
+}
+
+/* Photo Container */
+.photo-container {
+    position: relative;
+    background-color: #ffffff;
+    border: 4px solid #000000;
+    border-radius: 4px;
+    overflow: hidden;
+    aspect-ratio: 3/4;
+}
+
+.photo-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Photo Overlay with Watermark */
+.photo-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        repeating-linear-gradient(
+            45deg,
+            transparent,
+            transparent 80px,
+            rgba(255, 255, 255, 0.1) 80px,
+            rgba(255, 255, 255, 0.1) 160px
+        );
+    pointer-events: none;
+}
+
+.watermark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-15deg);
+    font-family: 'canvasans-regular', Arial, sans-serif;
+    font-size: 4rem;
+    color: rgba(255, 255, 255, 0.4);
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    letter-spacing: 0.2rem;
+    user-select: none;
+}
+
+/* Photo Label */
+.photo-label {
+    background-color: #E8F4FF;
+    padding: 0.75rem;
+    text-align: center;
+    margin-top: 0.5rem;
+}
+
+.photo-label p {
+    font-family: 'montserrat-bold', Arial, sans-serif;
+    font-size: 1.125rem;
+    color: #4A4A4A;
+    margin: 0;
+}
+
+/* Save Question */
+.save-question {
+    font-family: 'fredoka', Arial, sans-serif;
+    font-size: 1.75rem;
+    color: #000000;
+    text-align: center;
+    margin: 0;
+}
+
+/* Save Buttons */
+.save-buttons {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    width: 100%;
+    max-width: 500px;
+}
+
+.save-btn {
+    font-family: 'fredoka', Arial, sans-serif;
+    font-size: 1.5rem;
+    padding: 1rem 3.5rem;
+    border: none;
+    border-radius: 5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: #000000;
+    color: #ffcb01;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    min-width: 150px;
+}
+
+.save-btn:hover {
+    background-color: #333333;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+.save-btn:active {
+    transform: translateY(0);
+    background-color: #ea1e0e;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    .save-photo-wrapper {
+        padding: 1.5rem 1rem;
+        gap: 1.5rem;
+    }
+
+    .photo-frame {
+        max-width: 300px;
+        padding: 0.75rem;
+        border: 6px solid #000000;
+    }
+
+    .photo-container {
+        border: 3px solid #000000;
+    }
+
+    .watermark {
+        font-size: 3rem;
+    }
+
+    .photo-label p {
+        font-size: 1rem;
+    }
+
+    .save-question {
+        font-size: 1.5rem;
+    }
+
+    .save-buttons {
+        flex-direction: column;
+        gap: 1rem;
+        width: 100%;
+    }
+
+    .save-btn {
+        width: 100%;
+        font-size: 1.25rem;
+        padding: 0.875rem 2rem;
+    }
+}
