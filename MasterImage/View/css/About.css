@@ -160,6 +160,26 @@ section {
     right: 4vw;
 }
 
+#back-btn {
+    display: none;
+    position: absolute;
+    margin: 0;
+    top: 5vh;
+    left: 2.7vw;
+    font-family: montserrat-extra-bold;
+    font-size: 5vh;
+}
+
+#back-btn:active, #back-btn:visited, #back-btn:link {
+    text-decoration: none;
+    color: #010100;
+}
+
+#back-btn:hover {
+    color: #eb1e0e;
+    cursor: pointer;
+}
+
 .about-content {
     margin-top: 8vh;
     margin-left: 10vw;
@@ -253,41 +273,32 @@ ul {
 #about-developers {
     display: none;
     grid-template-areas:
-    'carousel carousel motivation'
+    'motivation'
+    'dev-list1'
+    'dev-list2'
     ;
     justify-content: flex-start;
     align-items: flex-start;
 }
 
-.carousel {
+.developers-list1 {
     display: grid;
-    grid-area: carousel;
-    width: 40vw;
+    margin: 2vw 2vw 0 2vw;
+    grid-area: dev-list1;
+    grid-column-gap: 2vw;
+    grid-template-columns: auto auto auto auto;
     background-color: none;
-    justify-content: center;
-    align-items: center;
-    width: 40vw;
-    height: 60vh;
+    text-align: center;
 }
 
-.developer {
-    grid-area: developer;
+.developers-list2 {
     display: grid;
-    grid-template-columns: 
-    'developerImg developerImg'
-    'developerName developerName'
-    'developerPosition developerPosition'
-    ;
-    justify-content: center;
-    align-items: center;
-    margin-top: 3vh;
-}
-
-.developer img {
-    grid-area: developerImg;
-    position: static;
-    width: 17vw;
-    height: auto;
+    margin: 2vw 2vw 0 2vw;
+    grid-area: dev-list2;
+    grid-column-gap: 2vw;
+    grid-template-columns: auto auto auto;
+    background-color: none;
+    text-align: center;
 }
 
 .prev, .next {
@@ -314,32 +325,16 @@ ul {
     background-color: rgba(0,0,0,0.8);
 }
 
-.developer h2 {
-    grid-area: developerName;
-    position: static;
+.name{
     color: #010100;
     font-family: montserrat-bold;
     font-size: 1.5vw;
-    text-align: center;
 }
 
-.developer p {
-    grid-area: developerPosition;
-    position: static;
+.position {
     color: #010100;
     font-family: montserrat-medium;
-    font-size: 1.5vw;
-    text-align: center;
-}
-
-.fade {
-    animation-name: fade;
-    animation-duration: 1.5s;
-}
-
-@keyframes fade {
-    from {opacity: .4}
-    to {opacity: 1}
+    font-size: 1.5vw;    
 }
 
 .motivation {

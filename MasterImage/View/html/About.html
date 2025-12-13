@@ -22,6 +22,7 @@
                 
         </header>
         <section class="content">
+            <a href="About.html" id="back-btn">x</a>
             <div class="selector" id="selector-shop">
                 <img id="shop-icon" src="../assets/images/Shop-black.png" alt="Shop">
                 <p class="selector-name">Shop</p>
@@ -81,45 +82,37 @@
                 </p>
             </div>
             <div class="about-content" id="about-developers">
-                <div class="carousel">
-                    <div class="developer fade">
-                        <img src="../assets/images/owner.jpg" alt="">
-                        <h2>Yenzy Hynna Lumanglas</h2>
-                        <p>Project Manager</p>
+                <div class="developers-list1">
+                    <div class="developer1">
+                        <h2 class="name">Yenzy Hynna Lumanglas</h2>
+                        <p class="position">Project Manager</p>
                     </div>
-                    <div class="developer fade">
-                        <img src="../assets/images/owner.jpg" alt="">
-                        <h2>Marc Jansen Galvan</h2>
-                        <p>Front-End Developer</p>
+                    <div class="developer2">
+                        <h2 class="name">Marc Jansen Galvan</h2>
+                        <p class="position">Front-End Developer</p>
                     </div>
-                    <div class="developer fade">
-                        <img src="../assets/images/owner.jpg" alt="">
-                        <h2>Emily Sotelo</h2>
-                        <p>Front-End Developer</p>
+                    <div class="developer3">
+                        <h2 class="name">Emily Sotelo</h2>
+                        <p class="position">Front-End Developer</p>
                     </div>
-                    <div class="developer fade">
-                        <img src="../assets/images/owner.jpg" alt="">
-                        <h2>Kendrick Evangelista</h2>
-                        <p>Full-Stack Developer</p>
+                    <div class="developer4">
+                        <h2 class="name">Kendrick Evangelista</h2>
+                        <p class="position">Full-Stack Developer</p>
                     </div>
-                    <div class="developer fade">
-                        <img src="../assets/images/owner.jpg" alt="">
-                        <h2>Sheryn Ann Cagulada</h2>
-                        <p>Full-Stack Developer</p>
+                </div>
+                <div class="developers-list2">
+                                        <div class="developer5">
+                        <h2 class="name">Sheryn Ann Cagulada</h2>
+                        <p class="position">Full-Stack Developer</p>
                     </div>
-                    <div class="developer fade">
-                        <img src="../assets/images/owner.jpg" alt="">
-                        <h2>Ray Daniel Roque</h2>
-                        <p>Back-End Developer</p> 
+                    <div class="developer6">
+                        <h2 class="name">Ray Daniel Roque</h2>
+                        <p class="position">Back-End Developer</p> 
                     </div>
-                    <div class="developer fade">
-                        <img src="../assets/images/owner.jpg" alt="">
-                        <h2>Krishianne Mae Alcaparras</h2>
-                        <p>Back-End Developer</p>
+                    <div class="developer7">
+                        <h2 class="name">Krishianne Mae Alcaparras</h2>
+                        <p class="position">Back-End Developer</p>
                     </div>
-
-                    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-                    <a class="next" onclick="plusSlides(1)">&#10095;</a>
                 </div>
                 <div class="motivation">
                     <p class="about-text">
@@ -133,31 +126,6 @@
             </div>
         </section>
     </body>
-    <script>
-        let slideIndex = 1;
-            showSlides(slideIndex);
-
-            // Next/previous controls
-            function plusSlides(n) {
-            showSlides(slideIndex += n);
-            }
-
-            // Thumbnail image controls
-            function currentSlide(n) {
-            showSlides(slideIndex = n);
-            }
-
-            function showSlides(n) {
-            let i;
-            let slides = document.getElementsByClassName("developer");
-            if (n > slides.length) {slideIndex = 1}
-            if (n < 1) {slideIndex = slides.length}
-            for (i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";
-            }
-            slides[slideIndex-1].style.display = "grid";
-            }
-    </script>
     <footer>
         <p>©2025. Grow A Thesis. All Rights Reserved.</p>
     </footer>
