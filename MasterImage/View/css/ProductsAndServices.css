@@ -202,7 +202,80 @@ footer p {
 /* ----------- Media Query ----------- */
 
 @media screen and (max-width: 1366px) {
+    .prodserv {
+        display: block;
+        overflow-y: auto;       
+        overflow-x: hidden; 
+
+        -ms-overflow-style: none; 
+        scrollbar-width: none;
+    }
+
+    .prodserv::-webkit-scrollbar {
+        display: none; 
+    }
+
+    #productsTitle {
+        width: 100%;
+        text-align: left;
+        padding-left: 2rem;
+        font-family: 'montserrat-extra-bold';
+        font-size: 2.5rem;
+        color: #b32222;
+    }
+
     .product-grid {
-        grid-template-columns: repeat(3, 1fr);
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 3rem;
+        padding-left: 3rem;
+        padding-right: 3rem;
+        padding-top: 0.5rem;
+        padding-bottom: 2rem;
+    }
+
+    .product-card {
+        width: 225px;
+        height: 225px;
+        background-color: #fff;
+        margin: 0 auto;
+        border-radius: 4px;
+        box-shadow: 10px 10px 10px rgba(0,0,0,0.1);
+        padding: 1rem;
+        text-align: center;
+        transition: transform 0.3s ease;
+    }
+
+    .product-card .instax-frame {
+        background: white;
+        padding: 0.5rem;
+        padding-bottom: 1rem;
+        border-radius: 2px;
+        box-shadow: 2px 4px 8px rgba(0,0,0,0.2);
+        display: inline-block;
+    }
+
+    .product-card .instax-frame img {
+        width: 205px;
+        height: 175px;
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
+        border-radius: 1px;
+    }
+
+
+    .product-card:hover {
+        transform: scale(1.08);
+        box-shadow:
+            0 0 20px rgba(0, 0, 0, 0.7),
+            0 0 35px rgba(0, 0, 0, 0.5),
+            0 0 50px rgba(0, 0, 0, 0.3);
+        z-index: 10;
+    }
+
+    .product-card h3 {
+        font-size: 0.9rem;
+        margin: 0.4rem 0;
+        font-family: 'montserrat-medium';
     }
 }
