@@ -193,7 +193,7 @@ footer p {
 
 #UA {
     padding: 2rem 6rem;
-    height: 34vw;
+    height: 72vh;
     width: 100%;
     box-sizing: border-box;
 }
@@ -215,8 +215,8 @@ footer p {
 
 #termsAndConditions {
     margin-top: 2.5vh;
-    margin-left: -2vw;
-    width: 87vw;
+    margin-left: 1vw;
+    width: 80vw;
     height: 60vh;
     border: 0.1rem solid gainsboro;
     background-color: rgba(255, 255, 255, 0.5);
@@ -313,10 +313,10 @@ footer p {
 @media screen and (max-width: 1366px) {
 
     #UA {
-    padding: 2rem 6rem;
-    height: 34vw;
-    width: 100%;
-    box-sizing: border-box;
+        padding: 2rem 6rem;
+        height: 68vh;
+        width: 100%;
+        box-sizing: border-box;
     }
 
     #userAgreementTitle{
@@ -329,15 +329,19 @@ footer p {
     }
 
     #message {
-        margin-top: -6vh;
+        margin-top: -2rem;
         font-family: 'montserrat-bold';
         font-size: x-large;
     }
 
     #termsAndConditions {
-        margin-left: 2vw;
-        margin-top: -2.5vh;
-        background-color: #FDD024;
+        margin-top: 2.5vh;
+        margin-left: 1vw;
+        width: 80vw;
+        height: 60vh;
+        border: 0.1rem solid gainsboro;
+        background-color: rgba(255, 255, 255, 0.5);
+        overflow: scroll;
 
         /* scrollbar */
         height: 75%;       
