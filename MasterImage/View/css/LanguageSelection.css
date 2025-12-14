@@ -73,6 +73,13 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
+.lang-btn.selected {
+    background-color: #2DD881;
+    color: #000000;
+    transform: translateY(-3px);
+    box-shadow: 0 0 0 4px rgba(45, 216, 129, 0.5);
+}
+
 /* Navigation Buttons Container */
 .navigation-buttons {
     display: flex;

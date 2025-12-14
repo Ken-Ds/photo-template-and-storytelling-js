@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content Page</title>
+    <style>
+        /* Basic Styling */
+        body { font-family: sans-serif; padding: 20px; text-align: center; }
+        
+        /* By default, HIDE all language specific content */
+        .lang-content {
+            display: none; 
+        }
+
+        /* Styling for the visible content */
+        .visible {
+            display: block;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="english-container" class="lang-content">
+        <h1>Welcome (English)</h1>
+        <ul>
+            <li>English Item 1</li>
+            <li>English Item 2</li>
+            <li>English Item 3</li>
+        </ul>
+    </div>
+
+    <div id="bontok-container" class="lang-content">
+        <h1>Wad-ay (Bontok)</h1>
+        <ul>
+            <li>Bontok Item 1</li>
+            <li>Bontok Item 2</li>
+            <li>Bontok Item 3</li>
+        </ul>
+    </div>
+
+    <button onclick="window.history.back()" style="margin-top: 20px;">Go Back</button>
+
+    <script src="../js/ContentPage.js"></script>
+</body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Master Image - Final Result</title>
+    <link rel="stylesheet" type="text/css" href="../css/SelectTemplate.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+    <style>
+        .result-container {
+            display: flex;
+            gap: 3rem;
+            align-items: center;
+            justify-content: center;
+            background-color: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .image-preview {
+            width: 300px;
+            border: 2px solid black;
+            border-radius: 10px;
+            box-shadow: 5px 5px 0px #ffcb01;
+        }
+
+        .qr-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            text-align: center;
+            color: black;
+            font-family: 'montserrat-bold', sans-serif;
+        }
+
+        #qrcode {
+            padding: 1rem;
+            background: white;
+            border: 2px solid black;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .btn-style {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-family: 'fredoka', sans-serif;
+            font-size: 1rem;
+            transition: transform 0.2s;
+        }
+        
+        .btn-download { background-color: #ffcb01; color: black; }
+        .btn-home { background-color: #000; color: white; }
+        
+        .btn-style:hover { transform: scale(1.05); }
+    </style>
+</head>
+<body>
+    
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <img src="../assets/images/logo.png" alt="Logo">
+            </div>
+            <div class="navbar-buttons"></div>
+        </nav>
+    </header>
+
+    <section class="content">
+        <div class="template-selection-wrapper">
+            <h1 class="template-selection-title">Your Photo is Ready!</h1>
+            
+            <div id="result-area" class="result-container">
+                
+                <div>
+                    <img id="final-image-display" class="image-preview" src="" alt="Final Result">
+                </div>
+
+                <div class="qr-section">
+                    <p>Scan to get on Mobile</p>
+                    <div id="qrcode"></div>
+                    
+                    <div class="action-buttons">
+                        <a id="download-link" href="#" download="MyMasterpiece.png">
+                            <button class="btn-style btn-download">Download Image</button>
+                        </a>
+                        
+                        <a href="/">
+                            <button class="btn-style btn-home">Home</button>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>©2025. Grow A Thesis. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        window.onload = function() {
+            // 1. Get the filename saved by SelectCaption.html
+            const filename = localStorage.getItem('finalFilename');
+
+            if (!filename) {
+                alert("No image found! You might need to create one first.");
+                window.location.href = "/index.html"; // Redirect to start if empty
+                return;
+            }
+
+            // 2. Construct the Paths
+            // Assuming this HTML file is in /html/ and images are in ../assets/uploads/
+            const imagePath = `../assets/uploads/${filename}`;
+            const fullURL = window.location.origin + `/assets/uploads/${filename}`;
+
+            // 3. Set the Image Source
+            const imgElement = document.getElementById('final-image-display');
+            imgElement.src = imagePath;
+
+            // 4. Setup the Download Button
+            const downloadLink = document.getElementById('download-link');
+            downloadLink.href = imagePath; 
+            // Optional: Set a specific filename for the download
+            downloadLink.download = `MasterPiece_${Date.now()}.png`;
+
+            // 5. Generate QR Code
+            new QRCode(document.getElementById("qrcode"), {
+                text: fullURL,
+                width: 150,
+                height: 150,
+                colorDark : "#000000",
+                colorLight : "#ffffff",
+                correctLevel : QRCode.CorrectLevel.H
+            });
+        };
+    </script>
+</body>
+</html>

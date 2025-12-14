@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Master Image - Add Caption</title>
+    <link rel="stylesheet" type="text/css" href="../css/SelectTemplate.css">
+    
+    <style>
+        /* --- CSS FIXES FOR UI LAYOUT & DYNAMIC BUTTONS --- */
+        
+        .template-selection-wrapper {
+            margin-top: 0;
+            gap: 1rem;
+            width: 100%;
+        }
+
+        .editor-container { 
+            display: flex; 
+            gap: 40px; 
+            justify-content: center; 
+            align-items: center; 
+            flex-wrap: wrap; 
+            margin-top: 20px;
+        }
+        
+        #canvas-wrapper {
+            position: relative;
+            width: 360px;
+            height: 450px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 4px solid #000;
+        }
+        
+        canvas { width: 100%; height: 100%; object-fit: contain; }
+
+        .controls-area {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+        }
+
+        /* CONTAINER: Keeps the list tidy even if buttons are huge */
+        .caption-list { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 10px; 
+            width: 100%;
+            max-width: 320px; /* Slightly wider for reading */
+            max-height: 400px; /* Matches canvas height */
+            overflow-y: auto;  /* Adds scrollbar */
+            padding-right: 8px;
+        }
+
+        /* Scrollbar styling */
+        .caption-list::-webkit-scrollbar { width: 8px; }
+        .caption-list::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 4px; }
+        .caption-list::-webkit-scrollbar-thumb { background: #888; border-radius: 4px; }
+
+        /* BUTTON BASE STYLE */
+        .caption-btn {
+            padding: 15px;
+            background: #010100;
+            color: #ffcb01;
+            border: 2px solid transparent;
+            border-radius: 15px;
+            cursor: pointer;
+            font-family: 'fredoka', sans-serif;
+            text-align: left;
+            transition: all 0.2s ease;
+            
+            /* DYNAMIC HEIGHT LOGIC */
+            display: block; 
+            width: 100%;
+            height: auto;          /* Grow to fit text */
+            white-space: normal;   /* Wrap text naturally */
+            word-wrap: break-word; /* Prevent overflow */
+        }
+
+        /* DYNAMIC FONT SIZES (Applied via JS) */
+        .caption-btn.text-short {
+            font-size: 1.1rem;
+            line-height: 1.4;
+        }
+        
+        .caption-btn.text-medium {
+            font-size: 0.9rem;
+            line-height: 1.3;
+            padding: 12px;
+        }
+
+        .caption-btn.text-long {
+            font-size: 0.75rem; /* Small font for paragraphs */
+            line-height: 1.25;  /* Tight spacing */
+            padding: 10px;
+            font-family: 'montserrat-medium', sans-serif; /* Cleaner font for long text */
+        }
+
+        .caption-btn:hover {
+            background: #2DD881; 
+            color: black; 
+            transform: translateX(3px);
+            border-color: black;
+        }
+
+        .finish-btn {
+            margin-top: 10px;
+            padding: 15px 40px;
+            font-size: 1.5rem;
+            font-family: 'fredoka', sans-serif;
+            background-color: #d90429;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .finish-btn:hover { background-color: #b00020; }
+        .finish-btn img { width: 30px; filter: invert(1); }
+        .finish-btn:disabled { opacity: 0.7; cursor: not-allowed; }
+    </style>
+</head>
+<body>
+    
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <img src="../assets/images/logo.png" alt="Logo">
+            </div>
+            <div class="navbar-buttons"></div>
+        </nav>
+    </header>
+
+    <section class="content" style="margin-top: -5rem; padding-bottom: 2rem;">
+        <div class="template-selection-wrapper">
+            <h1 class="template-selection-title">Pick a Caption</h1>
+
+            <div class="editor-container">
+                <div id="canvas-wrapper">
+                    <canvas id="previewCanvas" width="800" height="1000"></canvas>
+                </div>
+
+                <div class="controls-area">
+                    <div class="caption-list" id="captionButtons"></div>
+
+                    <button id="finishBtn" class="finish-btn">
+                        Finish & Save 
+                        <img src="../assets/images/next.png" alt=">">
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>©2025. Grow A Thesis. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+    // --- 1. CONFIGURATION & DATA ---
+    // Note: AI will generate text, these are just fallbacks if AI fails
+    const defaultCaptions = ["Making Memories", "Best Day Ever", "Cherishing this moment", "Growth Mindset"];
+
+    const templateColors = {
+        'template1.png': '#D90429', // Red
+        'template2.png': '#296f4b', // Green
+        'template3.png': '#a1431b', // Pink
+        'template4.png': '#1b3d9f', // Blue
+        'default':       '#ffcb01'  // Yellow
+    };
+
+    // --- 2. SETUP VARIABLES ---
+    const lang = localStorage.getItem('selectedLanguage') || 'english';
+    const templateSrc = localStorage.getItem('selectedTemplate') || 'template1.png';
+    const userImageSrc = localStorage.getItem('uploadedFilename') || 'placeholder.jpg'; 
+
+    const canvas = document.getElementById('previewCanvas');
+    const ctx = canvas.getContext('2d');
+    const btnContainer = document.getElementById('captionButtons'); 
+    
+    let selectedCaptionText = "";
+    let imagesLoaded = 0;
+    const totalImages = 2;
+
+    // --- 3. HELPER FUNCTIONS ---
+
+    function checkImagesLoaded() {
+        imagesLoaded++;
+        if (imagesLoaded === totalImages) {
+            drawCanvas();
+        }
+    }
+
+    function drawImageProp(ctx, img, x, y, w, h) {
+        const scale = Math.min(w / img.width, h / img.height);
+        const xPos = x + (w / 2) - (img.width * scale / 2);
+        const yPos = y + (h / 2) - (img.height * scale / 2);
+        ctx.drawImage(img, xPos, yPos, img.width * scale, img.height * scale);
+    }
+
+    // --- DYNAMIC CANVAS FONT LOGIC ---
+    function getDynamicFontSize(text) {
+        const len = text.length;
+        if (len < 20) return 45;       
+        if (len < 50) return 35;       
+        if (len < 100) return 28;      
+        if (len < 200) return 24;      
+        return 20; // Smallest for long text
+    }
+
+    // --- DRAW TEXT ON CANVAS ---
+    function drawWrappedCaption(ctx, text, x, y, maxWidth, color) {
+        const fontSize = getDynamicFontSize(text);
+        const lineHeight = fontSize * 1.2;
+        ctx.font = `bold ${fontSize}px 'Montserrat', Arial`;
+
+        const words = text.split(' ');
+        let line = '';
+        let lines = [];
+
+        // Calculate Lines
+        for(let n = 0; n < words.length; n++) {
+            const testLine = line + words[n] + ' ';
+            const metrics = ctx.measureText(testLine);
+            if (metrics.width > maxWidth && n > 0) {
+                lines.push(line);
+                line = words[n] + ' ';
+            } else {
+                line = testLine;
+            }
+        }
+        lines.push(line);
+
+        // Dimensions
+        const totalTextHeight = lines.length * lineHeight;
+        const padding = 20;
+        const boxWidth = maxWidth + (padding * 2); 
+        const boxHeight = totalTextHeight + padding; 
+        const startY = y - (totalTextHeight / 2);
+
+        // Draw Box
+        ctx.save();
+        ctx.fillStyle = "rgba(255, 255, 255, 0.9)";
+        ctx.shadowColor = "rgba(0,0,0,0.5)";
+        ctx.shadowBlur = 10;
+        ctx.fillRect(x - (boxWidth / 2), startY - (padding/2), boxWidth, boxHeight);
+        ctx.restore();
+
+        // Draw Text
+        ctx.save();
+        ctx.textAlign = "center";
+        ctx.textBaseline = "top";
+        ctx.fillStyle = color;
+        
+        if(fontSize > 30) {
+            ctx.strokeStyle = "black";
+            ctx.lineWidth = 3;
+        }
+
+        lines.forEach((lineText, i) => {
+            const lineY = startY + (i * lineHeight);
+            if(fontSize > 30) ctx.strokeText(lineText, x, lineY);
+            ctx.fillText(lineText, x, lineY);
+        });
+        ctx.restore();
+    }
+
+    // --- 4. MAIN DRAW FUNCTION ---
+    function drawCanvas() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = "white";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        // Draw User Image
+        if (userImg.complete && userImg.naturalHeight !== 0) {
+            drawImageProp(ctx, userImg, 50, 50, 700, 700);
+        } else {
+            ctx.fillStyle = "#ccc";
+            ctx.fillRect(50, 50, 700, 700);
+            ctx.fillStyle = "#000";
+            ctx.font = "30px Arial";
+            ctx.textAlign = "center";
+            ctx.fillText("User Photo Missing", 400, 400);
+        }
+
+        // Draw Template
+        if (templateImg.complete && templateImg.naturalHeight !== 0) {
+            ctx.drawImage(templateImg, 0, 0, 800, 1000);
+        }
+
+        // Draw Caption
+        if (selectedCaptionText) {
+            const captionColor = templateColors[templateSrc] || templateColors['default'];
+            drawWrappedCaption(ctx, selectedCaptionText, 400, 880, 650, captionColor);
+        }
+    }
+
+    // --- 5. INITIALIZE IMAGES ---
+    const userImg = new Image();
+    const templateImg = new Image();
+
+    userImg.onload = checkImagesLoaded;
+    userImg.onerror = () => { console.warn("User img failed"); checkImagesLoaded(); };
+    templateImg.onload = checkImagesLoaded;
+    templateImg.onerror = () => { console.warn("Template img failed"); checkImagesLoaded(); };
+
+    userImg.src = `../assets/uploads/${userImageSrc}`; 
+    templateImg.src = `../assets/images/${templateSrc}`;
+
+    // --- 6. GENERATE DYNAMIC BUTTONS (UPDATED) ---
+    function generateButtons(captionList) {
+        btnContainer.innerHTML = ''; 
+        
+        captionList.forEach(text => {
+            const btn = document.createElement('button');
+            
+            // Assign Dynamic Classes based on length
+            let sizeClass = 'text-short';
+            if (text.length > 150) {
+                sizeClass = 'text-long';
+            } else if (text.length > 60) {
+                sizeClass = 'text-medium';
+            }
+            
+            btn.className = `caption-btn ${sizeClass}`;
+            btn.innerText = text; // Full text displayed
+
+            btn.onclick = () => {
+                selectedCaptionText = text;
+                drawCanvas();
+            };
+            btnContainer.appendChild(btn);
+        });
+    }
+
+    // --- 7. MAIN LOGIC: AI OR DIALECT ---
+    // NOTE: This now calls the AI for BOTH English and Bontoc
+    btnContainer.innerHTML = '<p style="text-align:center; color:black; font-family:sans-serif;">✨ AI is analyzing your photo...</p>';
+
+    fetch(`../assets/uploads/${userImageSrc}`)
+        .then(res => res.blob())
+        .then(blob => {
+            const reader = new FileReader();
+            reader.onloadend = function() {
+                const base64data = reader.result;
+                
+                fetch('/generate-captions', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    // IMPORTANT: We pass the 'lang' variable here!
+                    body: JSON.stringify({ 
+                        imageBase64: base64data,
+                        language: lang 
+                    })
+                })
+                .then(res => res.json())
+                .then(data => {
+                    const list = (data.captions && data.captions.length > 0) ? data.captions : defaultCaptions;
+                    generateButtons(list);
+                })
+                .catch(err => {
+                    console.error("AI Error:", err);
+                    generateButtons(defaultCaptions);
+                });
+            }
+            reader.readAsDataURL(blob);
+        })
+        .catch(err => {
+            console.error("Image Load Error:", err);
+            generateButtons(defaultCaptions);
+        });
+
+
+    // --- 8. FINISH BUTTON LOGIC ---
+    document.getElementById('finishBtn').onclick = () => {
+        const finishBtn = document.getElementById('finishBtn');
+        const finalImageData = canvas.toDataURL('image/png');
+        
+        finishBtn.innerHTML = "Saving...";
+        finishBtn.disabled = true;
+
+        fetch('/save-final-image', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ imageBase64: finalImageData })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.filename) {
+                localStorage.setItem('finalFilename', data.filename);
+                window.location.href = "/html/FinalResult.html";
+            } else {
+                alert("Server Error.");
+                finishBtn.disabled = false;
+            }
+        })
+        .catch(err => {
+            console.error(err);
+            alert("Connection Failed");
+            finishBtn.disabled = false;
+        });
+    };
+    </script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Master Image</title>
+    <link rel="stylesheet" type="text/css" href="../css/SelectTemplate.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+    
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <img src="../assets/images/logo.png" alt="Logo">
+            </div>
+            <div class="navbar-buttons"></div>
+        </nav>
+    </header>
+
+    <section class="content">
+        <div class="template-selection-wrapper">
+            <h1 class="template-selection-title">Choose a Frame</h1>
+            
+            <div class="template-grid">
+                <div class="template-card" onclick="selectTemplate('template1.png', this)">
+                    <img src="../assets/images/template1.png" alt="Template 1">
+                </div>
+                <div class="template-card" onclick="selectTemplate('template2.png', this)">
+                    <img src="../assets/images/template2.png" alt="Template 2">
+                </div>
+                <div class="template-card" onclick="selectTemplate('template3.png', this)">
+                    <img src="../assets/images/template3.png" alt="Template 3">
+                </div>
+                <div class="template-card" onclick="selectTemplate('template4.png', this)">
+                    <img src="../assets/images/template4.png" alt="Template 4">
+                </div>
+            </div>
+            
+            <div class="UAbuttons">   
+                <div id="nextUA" style="display: none;">
+                    <button class="next" type="button">Next<img src="../assets/images/next.png"></button>
+                </div>       
+            </div>
+        </div>
+    </section>
+
+    <div id="timeout-modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-title">Time limit reached...</div>
+            <div class="modal-text">
+                Time limit has been reached.<br>
+                You will redirected to homepage after:
+            </div>
+            <div class="modal-timer-icon">
+                <i class="fa-solid fa-stopwatch"></i>
+                <img src="../assets/images/qr-countdown.png" alt="Countdown Decoration" id="img-countdown-popup">
+                <div class="modal-timer-text"><span id="popup-countdown">3</span></div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>©2025. Grow A Thesis. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        console.log("Script loaded successfully"); // Check your console for this message
+
+        // Attach function to window explicitly to prevent ReferenceError
+        window.selectTemplate = function(templateName, element) {
+            console.log("Clicked:", templateName);
+            
+            // 1. Remove 'selected' class from ALL cards
+            const allCards = document.querySelectorAll('.template-card');
+            allCards.forEach(card => {
+                card.classList.remove('selected');
+            });
+
+            // 2. Add 'selected' class to the clicked card
+            if (element) {
+                element.classList.add('selected');
+            }
+
+            // 3. Show the Next button
+            const btnDiv = document.getElementById('nextUA');
+            if (btnDiv) {
+                btnDiv.style.display = 'block';
+                
+                // 4. Set Next button action
+                const nextBtn = btnDiv.querySelector('button');
+                if (nextBtn) {
+                    nextBtn.onclick = function() {
+                        localStorage.setItem('selectedTemplate', templateName);
+                        window.location.href = "/html/LanguageSelection.html";
+                    };
+                }
+            }
+        };
+    </script>
+</body>
+</html>

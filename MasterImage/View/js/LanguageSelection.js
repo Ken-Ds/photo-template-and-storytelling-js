@@ -1,4 +1,3 @@
-// LanguageSelection.js
 
 let selectedLanguage = 'english'; // Default language
 
@@ -25,10 +24,12 @@ backBtn.addEventListener('click', function() {
 
 // Next button functionality
 nextBtn.addEventListener('click', function() {
-    console.log('Proceeding with language:', selectedLanguage);
-    alert(`Language selected: ${selectedLanguage.charAt(0).toUpperCase() + selectedLanguage.slice(1)}`);
+    // Save language
+    localStorage.setItem('selectedLanguage', selectedLanguage);
+    
+    // Redirect to Caption Selection
+    window.location.href = "SelectCaption.html";
 });
-
 // Load previously selected language from localStorage (if exists)
 document.addEventListener('DOMContentLoaded', function() {
     const savedLanguage = localStorage.getItem('selectedLanguage');

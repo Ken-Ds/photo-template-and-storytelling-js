@@ -1,104 +1,50 @@
-const noBtn = document.getElementById('noBtn');
-const yesBtn = document.getElementById('yesBtn');
-const userPhoto = document.getElementById('userPhoto');
-const userName = document.getElementById('userName');
+document.addEventListener('DOMContentLoaded', () => {
+    // --- DOM Elements ---
+    const userPhoto = document.getElementById('userPhoto');
+    const userName = document.getElementById('userName'); // If you want to change the name later
+    const noBtn = document.getElementById('noBtn');
+    const yesBtn = document.getElementById('yesBtn');
+    const watermark = document.querySelector('.watermark');
 
-// Load user photo and name from URL parameters or localStorage
-document.addEventListener('DOMContentLoaded', function() {
-    // Get URL parameters
-    const urlParams = new URLSearchParams(window.location.search);
-    const photoUrl = urlParams.get('photo');
-    const name = urlParams.get('name');
-    
-    // If photo URL is provided, display it
-    if (photoUrl) {
-        userPhoto.src = decodeURIComponent(photoUrl);
-    } else {
-        // Try to get from localStorage
-        const savedPhoto = localStorage.getItem('userPhoto');
-        if (savedPhoto) {
-            userPhoto.src = savedPhoto;
+    // --- 1. Get the Filename from URL ---
+    // The previous page redirected here with ?image=filename.jpg
+    const params = new URLSearchParams(window.location.search);
+    const filename = params.get('image');
+
+    // --- 2. Update the Image ---
+    if (filename) {
+        console.log("Loading image:", filename);
+        
+        // Construct the path relative to this HTML file.
+        // HTML is in /html/, Images are in /assets/uploads/
+        // So we go up one level (..) then into assets/uploads
+        userPhoto.src = `../assets/uploads/${filename}`;
+
+        // Optional: Hide the "Image Placeholder" text since we have a real photo
+        if (watermark) {
+            watermark.style.display = 'none';
         }
-    }
-    
-    // If name is provided, display it
-    if (name) {
-        userName.textContent = decodeURIComponent(name);
     } else {
-        // Try to get from localStorage
-        const savedName = localStorage.getItem('userName');
-        if (savedName) {
-            userName.textContent = savedName;
-        }
+        console.error("No image filename found in URL parameters.");
+        // Optional: Show an error or keep the placeholder
+        userPhoto.alt = "Error: Image not found";
     }
+
+    // --- 3. Button Functionality ---
+    
+    // "No" Button - Go back to the start
+    noBtn.addEventListener('click', () => {
+        // Redirect to the homepage (Index.html)
+        window.location.href = "/";
+    });
+
+    // "Yes" Button - Logic for saving
+    yesBtn.addEventListener('click', () => {
+        // You can add logic here to print, save to DB, or just finish the flow
+        console.log("User accepted the photo.");
+        alert("Photo Saved! (Placeholder action)");
+        
+        // Perhaps redirect to a "Thank You" page?
+        // window.location.href = "/html/ThankYou.html";
+    });
 });
-
-// No button - Don't save and go back or to home
-noBtn.addEventListener('click', function() {
-    console.log('User chose not to save the photo');
-    
-    // Clear any stored photo data
-    localStorage.removeItem('userPhoto');
-    localStorage.removeItem('userName');
-    
-    // Redirect to home page or previous page
-    // window.location.href = 'Home.html';
-    // OR go back:
-    window.history.back();
-});
-
-// Yes button - Save the photo
-yesBtn.addEventListener('click', function() {
-    console.log('User chose to save the photo');
-    
-    // Here you would implement the actual save functionality
-    // This could involve:
-    // 1. Downloading the image
-    // 2. Saving to a database
-    // 3. Sending to a server endpoint
-    
-    // Example: Download the image
-    downloadPhoto();
-    
-    // Redirect to success page or home
-    // window.location.href = 'SaveSuccess.html';
-});
-
-// Function to download the photo
-function downloadPhoto() {
-    const photoSrc = userPhoto.src;
-    const photoName = userName.textContent.replace(/\s+/g, '_') + '_photo.jpg';
-    
-    // Create a temporary link element
-    const link = document.createElement('a');
-    link.href = photoSrc;
-    link.download = photoName;
-    
-    // Trigger the download
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    
-    console.log('Photo download initiated');
-}
-
-// Alternative: Convert canvas/image to blob and download
-// This is useful if you need to process the image first
-function downloadPhotoAsBlob() {
-    fetch(userPhoto.src)
-        .then(response => response.blob())
-        .then(blob => {
-            const url = window.URL.createObjectURL(blob);
-            const link = document.createElement('a');
-            link.href = url;
-            link.download = userName.textContent.replace(/\s+/g, '_') + '_photo.jpg';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            window.URL.revokeObjectURL(url);
-        })
-        .catch(error => {
-            console.error('Error downloading photo:', error);
-            alert('Failed to download photo. Please try again.');
-        });
-}
