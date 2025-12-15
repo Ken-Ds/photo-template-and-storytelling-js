@@ -104,6 +104,7 @@
     align-items: center;
     gap: 0.5rem;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    margin-bottom: 3rem;
 }
 
 .nav-btn:hover {
